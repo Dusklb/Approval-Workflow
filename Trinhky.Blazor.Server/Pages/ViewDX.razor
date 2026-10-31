@@ -1,0 +1,818 @@
+﻿@using DevExpress.ExpressApp;
+@using DevExpress.ExpressApp.Xpo;
+@using DevExpress.Xpo;
+@using DevExpress.Xpo.DB;
+@using DevExpress.Data.Filtering;
+@using DevExpress.Blazor.Office;
+@using DevExpress.Blazor.RichEdit
+@using DevExpress.XtraRichEdit;
+@using DevExpress.XtraRichEdit.API.Native;
+@using Trinhky.Module
+@using Trinhky.Module.BusinessObjects
+@using DevExpress.Persistent.BaseImpl;
+@using Trinhky.Blazor.Server.Controllers;
+
+@inject DevExpress.ExpressApp.Core.IObjectSpaceFactory objectSpaceFactory
+@inject IJSRuntime jsRuntime
+@inject NavigationManager NavigationManager
+
+<style>
+    .my-textstyle {
+        border: none;
+        font-size:larger;
+        font-weight:900;
+    }
+</style>
+<style>
+    .my-style {
+        color: blue;
+        font-weight: bold;
+    }
+
+    .tieude {
+        font-weight: bold;
+    }
+
+    .nhieudong {
+        white-space:pre-wrap;
+    }
+
+    div.Container {
+        height: 100%;
+        border: none;
+        width: 100%;
+        overflow: auto;
+        /* POSITION */
+        position: relative;
+    }
+
+    div.Const {
+        border: none;
+        width: 100%;
+        height: 95px;
+        display:block;
+        background-color:white;
+        /* REMOVE FLOAT */
+        /* float: left; */
+        /* POSITION */
+        position: fixed;
+        z-index:1000;
+    }
+
+    div.Main {
+        border: none;
+        width: 100%;
+        margin-top: 100px;
+        height: 100%;
+        padding: 3px;
+    }
+</style>
+
+<div class="Container">
+    <div class="Const">
+        <DxFormLayout CssClass="w-100">
+            <DxFormLayoutItem Caption="" ColSpanMd="7">
+                <DxTextBox @bind-Text="@tendx" CssClass="my-textstyle"></DxTextBox>
+            </DxFormLayoutItem>
+            <div class="col col-lg-2">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style=@($"width: {tyle}%;")
+                         aria-valuenow=@tyle aria-valuemin="0"
+                         aria-valuemax="100">
+                        @tyle%
+                    </div>
+                </div>
+            </div>
+        </DxFormLayout>
+        <DxTextBox @bind-Text="@thongtin" ReadOnly=true ></DxTextBox>
+        <DxTextBox @bind-Text="@thongtin2" ReadOnly=true ></DxTextBox>
+    </div>
+    <div class="Main">
+        <div class="row">
+            <DxRichEdit DocumentFormat="DevExpress.Blazor.RichEdit.DocumentFormat.Rtf"
+                        DocumentContent="@documentContent"
+                        CustomizeRibbon=OnCustomizeRibbon
+                        CssClass="w-100 ch-720"
+                        ReadOnly=true />
+        </div>
+
+        <div class="row">
+            <div class="card-header bg-transparent text-body py-2 border-bottom-0 fw-bold">Tài liệu kèm theo:</div>
+            <DxGrid Data="@ListTL"
+                    PageSize="20"
+                    ColumnResizeMode="GridColumnResizeMode.NextColumn"
+                    SelectionMode="GridSelectionMode.Single"
+                    DataItemDeleting="OnDataItemDeleting">
+                <Columns>
+                    <DxGridDataColumn Caption="Id" FieldName="Id" Visible="false" />
+                    <DxGridDataColumn Caption="Ngày" FieldName="Ngay" Width="20%">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Ngày</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    <DxGridDataColumn Caption="Người gửi" FieldName="Nguoi" Width="20%">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Người gửi</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    <DxGridDataColumn FieldName="Tentailieu" Caption="Tên tài liệu" Width="30%">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Tên tài liệu</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    <DxGridDataColumn Caption="Tệp" FieldName="Tep" Width="20%">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Tệp</span>
+                        </HeaderCaptionTemplate>
+                        <CellDisplayTemplate>
+                            <a class="d-block text-left" href="javascript:;" @onclick="() => ShowDetails(context)">@context.DisplayText</a>
+                        </CellDisplayTemplate>
+                    </DxGridDataColumn>
+                    <DxGridDataColumn Caption="NhanvienId" FieldName="NhanvienId" Visible="false" />
+                    <DxGridDataColumn Caption="Loai" FieldName="Loai" Visible="false" />
+                    <DxGridCommandColumn EditButtonVisible=false NewButtonVisible=false DeleteButtonVisible=!Daduyet />
+                </Columns>
+                <DataColumnCellDisplayTemplate>
+                    @{
+                        if (context.GetRowValue("Loai").ToString() != "0")
+                        {
+                            <span class="my-style">@context.DisplayText</span>
+                        }
+                        else
+                        {
+                            <span>@context.DisplayText</span>
+                        }
+                    }
+                </DataColumnCellDisplayTemplate>
+
+            </DxGrid>
+        </div>
+        <br>
+        <div class="row">
+            <div class="card-header bg-transparent text-body py-2 border-bottom-0 fw-bold">Quá trình xử lý:</div>
+            <DxGrid Data="@ListYkien"
+                    PageSize="20"
+                    ColumnResizeMode="GridColumnResizeMode.NextColumn"
+                    DataItemDeleting="OnYkienItemDeleting"
+                    SelectionMode="GridSelectionMode.Single">
+                <Columns>
+                    <DxGridDataColumn Caption="Id" FieldName="Id" Visible="false" />
+                    <DxGridDataColumn Caption="Ngày" FieldName="Ngay" Width="20%">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Ngày</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    <DxGridDataColumn Caption="Người gửi" FieldName="Nguoi" Width="20%">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Người gửi</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    <DxGridDataColumn Caption="Ý kiến" FieldName="Noidung" Width="50%">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Ý kiến</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    <DxGridDataColumn Caption="NhanvienId" FieldName="NhanvienId" Visible="false" />
+                    <DxGridCommandColumn EditButtonVisible=false NewButtonVisible=false DeleteButtonVisible=!Daduyet />
+                </Columns>
+                <DataColumnCellDisplayTemplate>
+                    @{
+                        if (context.DataColumn.FieldName.Contains("Noidung"))
+                        {
+                            <span class="nhieudong">@context.DisplayText</span>
+                        }
+                        else
+                        {
+                            <span>@context.DisplayText</span>
+                        }
+                    }
+                </DataColumnCellDisplayTemplate>
+            </DxGrid>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="card-header bg-transparent text-body py-2 border-bottom-0 fw-bold">Chia sẻ:</div>
+            <DxGrid Data="@ListCS"
+                    PageSize="20"
+                    ColumnResizeMode="GridColumnResizeMode.NextColumn"
+                    DataItemDeleting="OnChiaseItemDeleting"
+                    SelectionMode="GridSelectionMode.Single">
+                <Columns>
+                    <DxGridDataColumn Caption="Id" FieldName="Id" Visible="false" />
+                    <DxGridDataColumn Caption="Ngày" FieldName="Ngay">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Ngày</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    <DxGridDataColumn Caption="Người chia sẻ" FieldName="Nguoi">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Người chia sẻ</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    <DxGridDataColumn Caption="Người được chia sẻ" FieldName="Nguoi2">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Ng. được chia sẻ</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    <DxGridDataColumn Caption="Bộ phận" FieldName="Bophan">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Bộ phận</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    <DxGridDataColumn Caption="Ý kiến" FieldName="Noidung" Width="40%">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Ý kiến</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    <DxGridCommandColumn EditButtonVisible=false NewButtonVisible=false DeleteButtonVisible=true />
+                </Columns>
+                <DataColumnCellDisplayTemplate>
+                    @{
+                        if (context.DataColumn.FieldName.Contains("Noidung"))
+                        {
+                            <span class="nhieudong">@context.DisplayText</span>
+                        }
+                        else
+                        {
+                            <span>@context.DisplayText</span>
+                        }
+                    }
+                </DataColumnCellDisplayTemplate>
+            </DxGrid>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="card-header bg-transparent text-body py-2 border-bottom-0 fw-bold">Qui trình duyệt:</div>
+            <DxGrid Data="@ListDuyet"
+                    PageSize="20"
+                    ColumnResizeMode="GridColumnResizeMode.NextColumn"
+                    DataItemDeleting="OnBuocduyetItemDeleting"
+                    SelectionMode="GridSelectionMode.Single">
+                <Columns>
+                    <DxGridDataColumn Caption="Id" FieldName="Id" Visible="false" />
+                    <DxGridDataColumn Caption="TT" FieldName="SoTT" Width="5%" TextAlignment="GridTextAlignment.Right">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">TT</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    @if (DuocXoa)
+                    {
+                        <DxGridDataColumn Caption="Người duyệt" FieldName="Nguoiduyet" Width="15%">
+                            <HeaderCaptionTemplate>
+                                <span class="tieude">Người duyệt</span>
+                            </HeaderCaptionTemplate>
+                            <CellDisplayTemplate>
+                                <button class="btn btn-link grid-btn-link" @onclick="() => GotoDetailsViewClick((QTDuyet)context.DataItem)">@context.DisplayText</button>
+                            </CellDisplayTemplate>
+                        </DxGridDataColumn>
+                    }
+                    else
+                    {
+                        <DxGridDataColumn Caption="Người duyệt" FieldName="Nguoiduyet" Width="15%">
+                            <HeaderCaptionTemplate>
+                                <span class="tieude">Người duyệt</span>
+                            </HeaderCaptionTemplate>
+                        </DxGridDataColumn>
+                    }
+                    <DxGridDataColumn Caption="Chức vụ" FieldName="Chucvu" Width="15%">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Chức vụ</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    <DxGridDataColumn Caption="Hạn duyệt" FieldName="Han" TextAlignment="GridTextAlignment.Right">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Hạn duyệt</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    <DxGridDataColumn Caption="Ngày duyệt" FieldName="Ngay" TextAlignment="GridTextAlignment.Right">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Ngày duyệt</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    <DxGridDataColumn Caption="Kết luận" FieldName="Ketluan" Width="15%">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Kết luận</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    <DxGridDataColumn Caption="Ý kiến" FieldName="Ghichu" Width="30%">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Ý kiến</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    @if (CotBoqua)
+                    {
+                        <DxGridDataColumn Caption="Bỏ qua" FieldName="Boqua" Visible=false>
+                            <HeaderCaptionTemplate>
+                                <span class="tieude">Bỏ qua</span>
+                            </HeaderCaptionTemplate>
+                        </DxGridDataColumn>
+                    }
+                </Columns>
+                <DataColumnCellDisplayTemplate>
+                    @{
+                        if (context.DataColumn.FieldName.Contains("Ghichu") || context.DataColumn.FieldName.Contains("Nguoiduyet") || context.DataColumn.FieldName.Contains("Chucvu"))
+                        {
+                            <span class="nhieudong">@context.DisplayText</span>
+                        }
+                        else
+                        {
+                            <span>@context.DisplayText</span>
+                        }
+                    }
+                </DataColumnCellDisplayTemplate>
+
+            </DxGrid>
+        </div>
+    </div>
+</div>
+
+
+
+
+@code {
+    [Parameter]
+    public XafApplication myApp { get; set; }
+    [Parameter]
+    public IObjectSpace myObjectSpace { get; set; }
+
+    string tendx{ get; set; }
+    string thongtin { get; set; }
+    string thongtin2 { get; set; }
+    byte[] documentContent;
+    int tyle{ get; set; }
+    private Ykien[] ListYkien;
+    private Tailieu[] ListTL;
+    private QTDuyet[] ListDuyet;
+    private Chiases[] ListCS;
+    IGridCommandColumn CommandColumnTailieu { get; set; }
+    bool Daduyet{ get; set; }
+    bool DuocXoa{ get; set; }
+    bool CotBoqua { get; set; }
+
+    protected override void OnInitialized()
+    {
+        LoadDulieu();
+    }
+
+    private void LoadDulieu()
+    {
+        Daduyet = false;
+        DuocXoa = false;
+        CotBoqua = false;
+        try
+        {
+            int phieuid = TCom.GetUserIntValue("viewdx");
+            if (phieuid > 0)
+            {
+                IObjectSpace objectSpace = objectSpaceFactory.CreateObjectSpace(typeof(Phieudexuat));
+                Session session = ((XPObjectSpace)objectSpace).Session;
+                Phieudexuat phieudexuat = objectSpace.FindObject<Phieudexuat>(CriteriaOperator.Parse("Oid=?", phieuid));
+                if (phieudexuat != null)
+                {
+                    if (phieudexuat.Mau != null)
+                    {
+                        if (phieudexuat.Mau.Xoaduyet)
+                            CotBoqua = true;
+                    }
+
+                    if (phieudexuat.Trangthai == TCom.EStatusVB.daduyet)
+                        Daduyet = true;
+
+                    tendx = phieudexuat.TenDexuat;
+                    thongtin = "Số: " + phieudexuat.Oid.ToString() + ", ngày: " + phieudexuat.Ngay.ToString("dd/MM/yyyy HH:mm") + ", Người lập: " + phieudexuat.Nhanvien.HoTen;
+                    if (phieudexuat.Noidung!=null)
+                        documentContent = System.Text.Encoding.ASCII.GetBytes(phieudexuat.Noidung);
+                    tyle = phieudexuat.TyleDuyet;
+
+                    string xuly = "Xử lý sau duyệt: ";
+                    if (phieudexuat.NguoiXuly != null)
+                    {
+                        xuly += phieudexuat.NguoiXuly.HoTen;
+                    }
+                    xuly += " - Thực hiện: ";
+                    if (phieudexuat.Nguoithuchien != null)
+                    {
+                        xuly += phieudexuat.Nguoithuchien.HoTen;
+                    }
+                    xuly += " - Hoàn thành: ";
+                    if (phieudexuat.Ngayxong != DateTime.MinValue)
+                        xuly += phieudexuat.Ngayxong.ToShortDateString();
+                    else if (phieudexuat.TrangthaiXL == TCom.EStatusXL.xldang)
+                        xuly += "đang xử lý";
+                    else 
+                        xuly += "chưa xử lý";
+                    thongtin2 = xuly;
+                }
+                //y kien
+                List<Ykien> objects = new();
+
+                // string sql = @"SELECT TOP (100) PERCENT dbo.Quatrinh.OID, dbo.Quatrinh.Ngay, dbo.Nhansu.HoTen, dbo.Quatrinh.Ykien, dbo.Quatrinh.Nhanvien
+                // FROM     dbo.Quatrinh INNER JOIN
+                // dbo.Nhansu ON dbo.Quatrinh.Nhanvien = dbo.Nhansu.OID
+                // WHERE  (dbo.Quatrinh.Phieu = " + phieuid + ") ORDER BY dbo.Quatrinh.Ngay";
+                // SelectedData results = session.ExecuteQuery(sql);
+
+                SelectedData results = session.ExecuteSprocParametrized("procYkien", new SprocParameter("@PhieuID", phieuid));
+                foreach (SelectStatementResultRow row in results.ResultSet[0].Rows)
+                {
+                    Ykien obj = new()
+                        {
+                            Id = tmLib.CommonLib.CInt(row.Values[0]),
+                            Nguoi = tmLib.CommonLib.CString(row.Values[2]),
+                            Noidung = tmLib.CommonLib.CString(row.Values[3]),
+                            NhanvienId = tmLib.CommonLib.CInt(row.Values[4]),
+                        };
+                    if (row.Values[1] != null)
+                        obj.Ngay = ((DateTime)row.Values[1]).ToString("dd/MM/yyyy HH:mm");
+
+                    objects.Add(obj);
+                }
+                ListYkien = objects.ToArray<Ykien>();
+
+                //Tai lieu
+                List<Tailieu> tailieus = new();
+                // string sql1 = @"SELECT TOP (100) PERCENT dbo.PhieudexuatFile.OID, dbo.PhieudexuatFile.Tailieu, dbo.PhieudexuatFile.Ngay, dbo.Nhansu.HoTen,
+                // dbo.PhieudexuatFile.Nhanvien, dbo.PhieudexuatFile.Loai, dbo.PhieudexuatFile.TepTen, dbo.PhieudexuatFile.TepUrl
+                // FROM     dbo.PhieudexuatFile LEFT OUTER JOIN
+                // dbo.Nhansu ON dbo.PhieudexuatFile.Nhanvien = dbo.Nhansu.OID
+                // WHERE  (dbo.PhieudexuatFile.Phieu = " + phieuid + ") ORDER BY dbo.PhieudexuatFile.Ngay";
+                // SelectedData results1 = session.ExecuteQuery(sql1);
+                SelectedData results1 = session.ExecuteSprocParametrized("procTailieu", new SprocParameter("@PhieuID", phieuid));
+                foreach (SelectStatementResultRow row in results1.ResultSet[0].Rows)
+                {
+                    Tailieu obj = new()
+                        {
+                            Id = tmLib.CommonLib.CInt(row.Values[0]),
+                            Tentailieu = tmLib.CommonLib.CString(row.Values[1]),
+                            Nguoi = tmLib.CommonLib.CString(row.Values[3]),
+                            NhanvienId = tmLib.CommonLib.CInt(row.Values[4]),
+                            Loai = tmLib.CommonLib.CInt(row.Values[5]),
+                            Tep = tmLib.CommonLib.CString(row.Values[6]),
+                            Url = tmLib.CommonLib.CString(row.Values[7]),
+                        };
+                    if (row.Values[2] != null)
+                    {
+                        DateTime.TryParse(tmLib.CommonLib.CString(row.Values[2]), out DateTime ngay1);
+                        obj.Ngay = ngay1.ToString("dd/MM/yyyy HH:mm");
+                    }
+                    tailieus.Add(obj);
+                }
+                ListTL = tailieus.ToArray<Tailieu>();
+
+                //chia se
+                XPCollection<Chiase> ds = new(session)
+                    {
+                        Criteria=CriteriaOperator.Parse("Phieu=?", phieuid),
+                        Sorting = new SortingCollection(new SortProperty("Ngay", SortingDirection.Ascending))
+                    };
+                List<Chiases> chiases = new();
+                foreach (Chiase item in ds)
+                {
+                    Chiases obj = new()
+                    {
+                        Id=item.Oid,
+                        Ngay = item.Ngay.ToString("dd/MM/yyyy HH:mm"),
+                        Noidung=item.Ykien
+                    };
+                    if (item.NhanvienShare != null)
+                    {
+                        obj.Nguoi = item.NhanvienShare.HoTen;
+                        obj.NhanvienId = item.NhanvienShare.Oid;
+                    }
+                    if (item.NhanvienShared != null)
+                        obj.Nguoi2 = item.NhanvienShared.HoTen;
+                    if (item.NhanvienShared.Donvi != null)
+                        obj.Bophan = item.NhanvienShared.Donvi.Name;
+                    chiases.Add(obj);
+                }
+                ListCS = chiases.ToArray<Chiases>();
+
+                //qua trinh duyet
+                Nhansu nv = TCom.GetCurrentNhanvien();
+
+                List<QTDuyet> qts = new();
+                // string sql2 = @"SELECT TOP (100) PERCENT dbo.DuyetDexuat.OID, dbo.DuyetDexuat.SoTT, dbo.Nhansu.HoTen, dbo.DuyetDexuat.Handuyet, dbo.DuyetDexuat.Ngayduyet, 
+                // dbo.DuyetDexuat.Trangthai, dbo.DuyetDexuat.Ghichu, Nhansu_1.HoTen AS UQ, dbo.DuyetDexuat.DuyetUQ, dbo.DuyetDexuat.Nguoiduyet,dbo.DuyetDexuat.Boqua 
+                // FROM     dbo.DuyetDexuat INNER JOIN
+                // dbo.Nhansu ON dbo.DuyetDexuat.Nguoiduyet = dbo.Nhansu.OID LEFT OUTER JOIN
+                // dbo.Nhansu AS Nhansu_1 ON dbo.DuyetDexuat.NguoiUQ = Nhansu_1.OID
+                // WHERE  (dbo.DuyetDexuat.Phieu = " + phieuid + ") ORDER BY dbo.DuyetDexuat.SoTT";
+                // SelectedData results2 = session.ExecuteQuery(sql2);
+                SelectedData results2 = session.ExecuteSprocParametrized("procBuocduyet", new SprocParameter("@PhieuID", phieuid));
+                foreach (SelectStatementResultRow row in results2.ResultSet[0].Rows)
+                {
+                    QTDuyet obj = new()
+                    {
+                        Id = tmLib.CommonLib.CString(row.Values[0]),
+                        SoTT = tmLib.CommonLib.CInt(row.Values[1]),
+                        Nguoiduyet = tmLib.CommonLib.CString(row.Values[2]),
+                        Ghichu = tmLib.CommonLib.CString(row.Values[6]),
+                    };
+                    int duyetuq = tmLib.CommonLib.CInt(row.Values[8]);
+                    int nguoiduyetoid = tmLib.CommonLib.CInt(row.Values[9]);
+                    string nguoiuq = tmLib.CommonLib.CString(row.Values[7]);
+                    if (!string.IsNullOrEmpty(nguoiuq))
+                        obj.Nguoiduyet += "\n"+ nguoiuq + " (UQ)";
+                    int trangthai = tmLib.CommonLib.CInt(row.Values[5]);
+                    if (trangthai == 1)
+                    {
+                        if (duyetuq==0)
+                            obj.Ketluan = "Không đồng ý";
+                        else
+                            obj.Ketluan = "Không đồng ý (UQ)";
+                    }
+                    else if (trangthai == 2)
+                        if (duyetuq == 0)
+                            obj.Ketluan = "Đồng ý";
+                        else
+                            obj.Ketluan = "Đồng ý (UQ)";
+                    else
+                        obj.Ketluan = "Chờ xử lý";
+                    if (row.Values[3] != null)
+                    {
+                        DateTime.TryParse(tmLib.CommonLib.CString(row.Values[3]), out DateTime ngay1);
+                        obj.Han = ngay1.ToString("dd/MM/yyyy");
+                    }
+                    if (row.Values[4] != null)
+                    {
+                        DateTime.TryParse(tmLib.CommonLib.CString(row.Values[4]), out DateTime ngay2);
+                        obj.Ngay = ngay2.ToString("dd/MM/yyyy HH:mm");
+                    }
+                    //chuc vu
+                    DuyetDexuat duyetDexuat=objectSpace.FindObject<DuyetDexuat>(CriteriaOperator.Parse("Oid=?", obj.Id));
+                    if (duyetDexuat != null)
+                    {
+                        if (duyetDexuat.Nguoiduyet != null)
+                            obj.Chucvu = duyetDexuat.Nguoiduyet.ListCV;
+                    }
+                    if (tmLib.CommonLib.CBool(row.Values[10]))
+                    {
+                        obj.Boqua = "X";
+                        obj.Ketluan = "Bỏ qua bước này";
+                    }
+                    else
+                        obj.Boqua = "";
+                    qts.Add(obj);
+                    //xac dinh duoc xoa
+                    if (nv != null)
+                    {
+                        if (obj.SoTT == 1 && trangthai == 0 && nguoiduyetoid == nv.Oid && phieudexuat.Mau.Xoaduyet && phieudexuat.Dagui)
+                            DuocXoa = true;
+                    }
+                }
+                ListDuyet = qts.ToArray<QTDuyet>();
+            }
+        }
+        catch (Exception ex)
+        {
+            TCom.CustomError(ex.Message);
+        }
+    }
+
+    void ShowDetails(GridDataColumnCellDisplayTemplateContext context)
+    {
+        var item = context.DataItem as Tailieu;
+        if (item != null)
+        {
+            if(!string.IsNullOrEmpty(item.Url))
+            {
+                string url = NavigationManager.ToAbsoluteUri(item.Url).AbsoluteUri;
+                jsRuntime.InvokeVoidAsync("open", url, "_blank");
+            }
+        }
+    }
+
+    void OnCustomizeRibbon(IRibbon model)
+    {
+        RibbonTabCollection tabs = model.Tabs;
+        tabs.Remove(RichEditRibbonTabNames.File);
+        tabs.Remove(RichEditRibbonTabNames.Home);
+        tabs.Remove(RichEditRibbonTabNames.Insert);
+        tabs.Remove(RichEditRibbonTabNames.PageLayout);
+
+        tabs.Remove(RichEditRibbonTabNames.MailMerge);
+        tabs.Remove(RichEditRibbonTabNames.References);
+        tabs.Remove(RichEditRibbonTabNames.TableDesign);
+        tabs.Remove(RichEditRibbonTabNames.TableLayout);
+    }
+
+    void OnDataItemDeleting(GridDataItemDeletingEventArgs e)
+    {
+        // Xoa tai lieu.
+        var dataItem = e.DataItem as Tailieu;
+        if (dataItem != null)
+        {
+            //e.Cancel = true;
+            // Remove the data item from the database.
+            Nhansu nv = TCom.GetCurrentNhanvien();
+            if (nv != null)
+            {
+                if (nv.Oid == dataItem.NhanvienId)
+                {
+                    string tepPath = Path.Combine(BCom.webRootPath, dataItem.Url);
+                    if (System.IO.File.Exists(tepPath))
+                        System.IO.File.Delete(tepPath);
+
+                    string sql = "Delete from PhieudexuatFile where Oid=" + dataItem.Id;
+                    IObjectSpace objectSpace = objectSpaceFactory.CreateObjectSpace(typeof(Phieudexuat));
+                    Session session = ((XPObjectSpace)objectSpace).Session;
+                    session.ExecuteNonQuery(sql);
+
+                    //LoadDulieu();
+                    var list = new List<Tailieu>(ListTL.Length);
+                    for (int i = 0; i < ListTL.Length; i++)
+                    {
+                        if (ListTL[i].Id != dataItem.Id)
+                        {
+                            list.Add(ListTL[i]);
+                        }
+                    }
+                    ListTL = list.ToArray<Tailieu>();
+                    InvokeAsync(() => StateHasChanged());
+                }
+                else
+                {
+                    TCom.CustomError("Bạn không thể xóa tài liệu của người khác");
+                }
+            }
+        }
+    }
+
+    void OnYkienItemDeleting(GridDataItemDeletingEventArgs e)
+    {
+        // Xoa y kien.
+        var dataItem = e.DataItem as Ykien;
+        if (dataItem != null)
+        {
+            //e.Cancel = true;
+            // Remove the data item from the database.
+            Nhansu nv = TCom.GetCurrentNhanvien();
+            if (nv != null)
+            {
+                if (nv.Oid == dataItem.NhanvienId)
+                {
+                    string sql = "Delete from Quatrinh where Oid=" + dataItem.Id;
+                    IObjectSpace objectSpace = objectSpaceFactory.CreateObjectSpace(typeof(Phieudexuat));
+                    Session session = ((XPObjectSpace)objectSpace).Session;
+                    session.ExecuteNonQuery(sql);
+                    //LoadDulieu();
+                    var list = new List<Ykien>(ListYkien.Length);
+                    for (int i = 0; i < ListYkien.Length; i++)
+                    {
+                        if (ListYkien[i].Id != dataItem.Id)
+                        {
+                            list.Add(ListYkien[i]);
+                        }
+                    }
+                    ListYkien = list.ToArray<Ykien>();
+                    InvokeAsync(() => StateHasChanged());
+                }
+                else
+                {
+                    TCom.CustomError("Bạn không thể xóa ý kiến của người khác");
+                }
+            }
+        }
+    }
+
+    void OnChiaseItemDeleting(GridDataItemDeletingEventArgs e)
+    {
+        // Xoa chia se.
+        var dataItem = e.DataItem as Chiases;
+        if (dataItem != null)
+        {
+            //e.Cancel = true;
+            // Remove the data item from the database.
+            Nhansu nv = TCom.GetCurrentNhanvien();
+            if (nv != null)
+            {
+                if (nv.Oid == dataItem.NhanvienId)
+                {
+                    string sql = "Delete from Chiase where Oid=" + dataItem.Id;
+                    IObjectSpace objectSpace = objectSpaceFactory.CreateObjectSpace(typeof(Chiase));
+                    Session session = ((XPObjectSpace)objectSpace).Session;
+                    session.ExecuteNonQuery(sql);
+                    //LoadDulieu();
+                    var list = new List<Chiases>(ListCS.Length);
+                    for (int i = 0; i < ListCS.Length; i++)
+                    {
+                        if (ListCS[i].Id != dataItem.Id)
+                        {
+                            list.Add(ListCS[i]);
+                        }
+                    }
+                    ListCS = list.ToArray<Chiases>();
+                    InvokeAsync(() => StateHasChanged());
+                }
+                else
+                {
+                    TCom.CustomError("Bạn không thể xóa chia sẻ của người khác");
+                }
+            }
+        }
+    }
+    void GotoDetailsViewClick(QTDuyet buocduyet)
+    {
+        string msg = ((buocduyet.Boqua=="X") ? "Chắc chắn DUYỆT bước này?" : "Chắc chắn BỎ QUA bước này?");
+        NonPersistentObjectSpace nonPersistentObjectSpace =
+            (NonPersistentObjectSpace)myApp.CreateObjectSpace(typeof(ConfirmationWindowParameters));
+        ConfirmationWindowParameters parameters = new()
+            {
+                ConfirmationMessage = msg
+            };
+        DetailView confirmationDetailView = myApp.CreateDetailView(nonPersistentObjectSpace, parameters);
+        confirmationDetailView.Caption = "Xác nhận";
+        myApp.ShowViewStrategy.ShowViewInPopupWindow(confirmationDetailView, ()=>Xulybuoc(buocduyet));
+
+    }
+    void Xulybuoc(QTDuyet buocduyet)
+    {
+        if (buocduyet.SoTT == 1)
+        {
+            TCom.CustomError("Bạn không thể bỏ qua chính mình");
+            return;
+        }
+        Session session = ((XPObjectSpace)myObjectSpace).Session;
+        if (buocduyet.Boqua == "X")
+        {
+            string sql = "Update DuyetDexuat set Boqua=0 where Oid="+buocduyet.Id;
+            session.ExecuteNonQuery(sql);
+        }
+        else
+        {
+            string sql = "Update DuyetDexuat set Boqua=1, Trangthai=0 where Oid="+buocduyet.Id;
+            session.ExecuteNonQuery(sql);
+        }
+        var list = new List<QTDuyet>(ListDuyet.Length);
+        for (int i = 0; i < ListDuyet.Length; i++)
+        {
+            if (ListDuyet[i].Id == buocduyet.Id)
+            {
+                if (buocduyet.Boqua == "X")
+                {
+                    ListDuyet[i].Boqua = "";
+                    ListDuyet[i].Ketluan = "Chờ xử lý";
+                }
+                else
+                {
+                    ListDuyet[i].Boqua = "X";
+                    ListDuyet[i].Ketluan = "Bỏ qua bước này";
+                }
+            }
+            list.Add(ListDuyet[i]);
+        }
+        ListDuyet = list.ToArray<QTDuyet>();
+        InvokeAsync(() => StateHasChanged());
+    }
+
+    void OnBuocduyetItemDeleting(GridDataItemDeletingEventArgs e)
+    {
+        // Xoa chia se.
+        var dataItem = e.DataItem as QTDuyet;
+        if (dataItem != null)
+        {
+            IObjectSpace objectSpace = objectSpaceFactory.CreateObjectSpace(typeof(DuyetDexuat));
+            DuyetDexuat duyetdx = objectSpace.FindObject<DuyetDexuat>(CriteriaOperator.Parse("Oid=?", dataItem.Id));
+            if (duyetdx != null)
+            {
+                if (duyetdx.Phieu != null)
+                {
+                    RichEditDocumentServer KyProcessor = new()
+                        {
+                            RtfText = duyetdx.Phieu.Kyduyet
+                        };
+                    string ma = duyetdx.Maduyet;
+                    string machuky = duyetdx.MaChuky;
+                    if (!string.IsNullOrEmpty(ma))
+                        KyProcessor.Document.ReplaceAll(ma, "", DevExpress.XtraRichEdit.API.Native.SearchOptions.None);
+                    if (!string.IsNullOrEmpty(machuky))
+                        KyProcessor.Document.ReplaceAll(machuky, "", DevExpress.XtraRichEdit.API.Native.SearchOptions.None);
+                    duyetdx.Phieu.Kyduyet = KyProcessor.RtfText;
+                    duyetdx.Phieu.Save();
+                    objectSpace.CommitChanges();
+                }
+                duyetdx.Delete();
+                objectSpace.CommitChanges();
+                var list = new List<QTDuyet>(ListDuyet.Length);
+                for (int i = 0; i < ListDuyet.Length; i++)
+                {
+                    if (ListDuyet[i].Id != dataItem.Id)
+                    {
+                        list.Add(ListDuyet[i]);
+                    }
+                }
+                ListDuyet = list.ToArray<QTDuyet>();
+                InvokeAsync(() => StateHasChanged());
+            }
+            //string sql = "Delete from DuyetDexuat where Oid=" + dataItem.Id;
+            //Session session = ((XPObjectSpace)objectSpace).Session;
+            //session.ExecuteNonQuery(sql);
+
+        }
+
+    }
+}

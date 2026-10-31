@@ -1,0 +1,518 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Title="Trình ký">
+  <BOModel>
+    <Class Name="DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
+    <Class Name="DevExpress.Xpo.XPObject">
+      <OwnMembers>
+        <Member Name="Oid" Caption="Số" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Trinhky.Module.BusinessObjects.ChucvuNV">
+      <OwnMembers>
+        <Member Name="Chucvu" LookupEditorMode="AllItems" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Trinhky.Module.BusinessObjects.Nhansu" DefaultLookupEditorMode="AllItemsWithSearch">
+      <OwnMembers>
+        <Member Name="Donvi" LookupEditorMode="AllItems" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <NavigationItems StartupNavigationItem="Phieudexuat_ListView">
+    <Items>
+      <Item Id="mnuDanhmuc" Caption="Danh mục" Index="0" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Chucdanh_ListView" ViewId="Chucdanh_ListView" ObjectKey="" Index="0" IsNewNode="True" />
+          <Item Id="Phanloai_ListView" ViewId="Phanloai_ListView" ObjectKey="" Index="1" IsNewNode="True" />
+          <Item Id="Bophan_ListView" ViewId="Bophan_ListView" ObjectKey="" Index="2" IsNewNode="True" />
+          <Item Id="Coso_ListView" ViewId="Coso_ListView" ObjectKey="" Index="4" IsNewNode="True" />
+          <Item Id="Nhansu_ListView" ViewId="Nhansu_ListView" ObjectKey="" Index="5" IsNewNode="True" />
+          <Item Id="MauVanban_ListView" ViewId="MauVanban_ListView" ObjectKey="" Index="6" IsNewNode="True" />
+          <Item Id="MauBP_ListView" ViewId="MauBP_ListView" ObjectKey="" Index="7" IsNewNode="True" />
+          <Item Id="Uyquyen_ListView" ViewId="Uyquyen_ListView" ObjectKey="" Index="7" IsNewNode="True" />
+          <Item Id="mnuMail" ViewId="MailOption_DetailView" ObjectKey="1" Index="8" IsNewNode="True" />
+          <Item Id="Phieudexuat_ListView" ViewId="Phieudexuat_ListView" ObjectKey="" Index="9" IsNewNode="True" />
+          <Item Id="Phieuduyet_ListView" Index="10" IsNewNode="True" />
+          <Item Id="PhieuDaduyet_ListView" Index="11" IsNewNode="True" />
+          <Item Id="PhieuDahuy_ListView" Index="12" IsNewNode="True" />
+          <Item Id="PhieuXuly_ListView" Index="13" IsNewNode="True" />
+          <Item Id="PhieuChiase_ListView" Index="14" IsNewNode="True" />
+          <Item Id="DexuatCanhan_ListView" Index="15" IsNewNode="True" />
+          <Item Id="DuyetDexuatCanhan_ListView" Index="16" IsNewNode="True" />
+          <Item Id="ThongkeDexuatMau_ListView" Index="17" IsNewNode="True" />
+          <Item Id="ThongkeDexuat_ListView" Index="18" IsNewNode="True" />
+          <Item Id="ThongkeDuyet_ListView" Index="19" IsNewNode="True" />
+          <Item Id="Huongdan_ListView" ViewId="Huongdan_ListView" ObjectKey="" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Default">
+        <Items>
+          <Item Id="Bophan_ListView" Removed="True" />
+          <Item Id="Chucdanh_ListView" Removed="True" />
+          <Item Id="Coso_ListView" Removed="True" />
+          <Item Id="Huongdan_ListView" Removed="True" />
+          <Item Id="MauBP_ListView" Removed="True" />
+          <Item Id="MauVanban_ListView" Removed="True" />
+          <Item Id="Nhansu_ListView" Removed="True" />
+          <Item Id="Phanloai_ListView" Removed="True" />
+          <Item Id="Phieudexuat_ListView" Removed="True" />
+          <Item Id="Uyquyen_ListView" Removed="True" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+  <Options>
+    <LayoutManagerOptions RequiredFieldMark="*" />
+  </Options>
+  <SchemaModules>
+    <SchemaModule Name="CloneObjectModule" Version="23.1.6.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerModuleBase" Version="22.2.6.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="23.1.6.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <ListView Id="ApplicationUser_ListView" Caption="Users" />
+    <DetailView Id="Bophan_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="10.666666666666666">
+            <LayoutGroup Id="Bophan" ShowCaption="False" RelativeSize="100">
+              <LayoutGroup Id="Bophan_col1" RelativeSize="49.957081545064376">
+                <LayoutItem Id="Parent" RelativeSize="37.5" />
+                <LayoutItem Id="Name" RelativeSize="35.416666666666664" />
+              </LayoutGroup>
+              <LayoutGroup Id="Bophan_col2" RelativeSize="50.042918454935624">
+                <LayoutItem Id="Dienthoai" RelativeSize="62.5" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="89.33333333333333">
+            <LayoutGroup Id="Children" RelativeSize="100">
+              <LayoutItem Id="Children" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Nhansus" RelativeSize="100">
+              <LayoutItem Id="Nhansus" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Bophan_ListView" IsFooterVisible="True">
+      <Columns>
+        <ColumnInfo Id="SoNV">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+      </Columns>
+    </ListView>
+    <ListView Id="ChiaseList_DanhsachChons_ListView" AllowDelete="False" AllowNew="False" ShowDetailView="False" />
+    <ListView Id="ChiaseList_DanhsachNVs_ListView" AllowDelete="False" AllowLink="False" AllowNew="False" ShowDetailView="False" />
+    <DetailView Id="ConfirmationWindowParameters_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="ConfirmationWindowParameters" RelativeSize="100">
+              <LayoutItem Id="ConfirmationMessage" ShowCaption="False" RelativeSize="100" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="DexuatCanhan_ListView" ShowDetailView="False" AllowDelete="False" AllowNew="False" />
+    <DetailView Id="DuyetDexuat_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="8.51063829787234">
+            <LayoutGroup Id="DuyetDexuat" ShowCaption="False" RelativeSize="100">
+              <LayoutGroup Id="DuyetDexuat_col1" RelativeSize="50">
+                <LayoutItem Id="SoTT" RelativeSize="37.5" />
+                <LayoutItem Id="Handuyet" RelativeSize="35.416666666666664" />
+              </LayoutGroup>
+              <LayoutGroup Id="DuyetDexuat_col2" RelativeSize="50">
+                <LayoutItem Id="Trangthai" RelativeSize="62.5" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="DuyetDexuatCanhan_ListView" AllowDelete="False" AllowNew="False" ShowDetailView="False" />
+    <DetailView Id="GiaoViec" CaptionColon=":" EnableCaptionColon="True" CaptionLocation="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" CaptionWordWrap="Default" EnableLayoutGroupImages="True" CustomizationEnabled="True" RequiredFieldMark="*" ClassName="Trinhky.Module.BusinessObjects.Phieudexuat" IsNewNode="True">
+      <Items IsNewNode="True">
+        <PropertyEditor Id="Ngay" PropertyName="Ngay" IsNewNode="True" />
+        <PropertyEditor Id="Nguoithuchien" PropertyName="Nguoithuchien" IsNewNode="True" />
+        <PropertyEditor Id="NguoiXuly" PropertyName="NguoiXuly" IsNewNode="True" />
+        <PropertyEditor Id="Nhanvien" PropertyName="Nhanvien" IsNewNode="True" />
+        <PropertyEditor Id="Nhanvien.CS.TenCoso" PropertyName="Nhanvien.CS.TenCoso" AllowEdit="False" IsNewNode="True" />
+        <PropertyEditor Id="Nhanvien.Donvi.Name" PropertyName="Nhanvien.Donvi.Name" AllowEdit="False" IsNewNode="True" />
+        <PropertyEditor Id="Oid" PropertyName="Oid" IsNewNode="True" />
+        <PropertyEditor Id="TenDexuat" PropertyName="TenDexuat" AllowEdit="False" IsNewNode="True" />
+        <PropertyEditor Id="Yeucau" PropertyName="Yeucau" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+          <LayoutGroup Id="SizeableEditors" Index="0" ShowCaption="False" Caption="Nội dung" RelativeSize="100" IsNewNode="True">
+            <LayoutItem Id="TenDexuat" ViewItem="TenDexuat" Index="0" RelativeSize="4.07185628742515" IsNewNode="True" />
+            <LayoutGroup Id="Auto8b588295-66aa-4ffc-9f5e-9d31f8eba137" ShowCaption="False" Caption="" Direction="Horizontal" Index="1" RelativeSize="3.1137724550898205" IsNewNode="True">
+              <LayoutItem Id="Oid" ViewItem="Oid" Index="0" RelativeSize="49.95004995004995" IsNewNode="True" />
+              <LayoutItem Id="Ngay" ViewItem="Ngay" Index="1" RelativeSize="50.04995004995005" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Auto69de4770-87a7-4767-a491-c8c673ae5fe9" ShowCaption="False" Caption="" Index="2" RelativeSize="6.227544910179641" IsNewNode="True">
+              <LayoutItem Id="Nhanvien" ViewItem="Nhanvien" Index="0" RelativeSize="50" IsNewNode="True" />
+              <LayoutGroup Id="Auto3124bce0-962e-40f1-96e8-2dbb052f6b07" ShowCaption="False" Caption="" Direction="Horizontal" Index="1" RelativeSize="50" IsNewNode="True">
+                <LayoutItem Id="Nhanvien.Donvi.Name" ViewItem="Nhanvien.Donvi.Name" Index="0" RelativeSize="49.95004995004995" IsNewNode="True" />
+                <LayoutItem Id="Nhanvien.CS.TenCoso" ViewItem="Nhanvien.CS.TenCoso" Index="1" RelativeSize="50.04995004995005" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutItem Id="NguoiXuly" ViewItem="NguoiXuly" Index="3" RelativeSize="3.1137724550898205" IsNewNode="True" />
+            <LayoutItem Id="Nguoithuchien" ViewItem="Nguoithuchien" Index="4" RelativeSize="3.1137724550898205" IsNewNode="True" />
+            <LayoutItem Id="Yeucau" ViewItem="Yeucau" ShowCaption="" Index="5" RelativeSize="80.35928143712574" IsNewNode="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Huongdan_ListView">
+      <Columns>
+        <ColumnInfo Id="SoTT" Index="0" SortIndex="0" SortOrder="Ascending" />
+        <ColumnInfo Id="Muc" SortIndex="-1" SortOrder="None" Index="1" />
+      </Columns>
+    </ListView>
+    <DetailView Id="MauVanban_DetailView">
+      <Items>
+        <PropertyEditor Id="QuitrinhChuans" PropertyName="QuitrinhChuans" View="MauVanban_QuitrinhChuans_ListView" IsNewNode="True" Removed="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="MauVanban" Caption="MauVanban" RelativeSize="100" Direction="Vertical" ShowCaption="False">
+              <TabbedGroup Id="Item2" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="Item1" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Caption="Văn bản" IsNewNode="True">
+                  <LayoutItem Id="Tenmau" ViewItem="Tenmau" Index="0" RelativeSize="4.342273307790549" IsNewNode="True" />
+                  <LayoutItem Id="Loai" ViewItem="Loai" Index="1" RelativeSize="3.3205619412515963" IsNewNode="True" />
+                  <LayoutItem Id="ApdungCS" ViewItem="ApdungCS" Index="2" RelativeSize="3.3205619412515963" IsNewNode="True" />
+                  <LayoutItem Id="Chucvuxuly" ViewItem="Chucvuxuly" Index="3" RelativeSize="3.3205619412515963" IsNewNode="True" />
+                  <LayoutItem Id="Thuchien" ViewItem="Thuchien" Index="4" RelativeSize="3.3205619412515963" IsNewNode="True" />
+                  <LayoutItem Id="Huy" ViewItem="Huy" Index="5" RelativeSize="3.3205619412515963" IsNewNode="True" />
+                  <TabbedGroup Id="Tabs" Index="6" RelativeSize="79.05491698595146" IsNewNode="True">
+                    <LayoutGroup Id="QuitrinhChuans" ShowCaption="True" Caption="Qui trình duyệt" Index="0" RelativeSize="100" IsNewNode="True">
+                      <LayoutItem Id="QuitrinhChuans" ViewItem="QuitrinhChuans" Index="0" RelativeSize="100" IsNewNode="True" />
+                    </LayoutGroup>
+                    <LayoutGroup Id="Dexuats" ShowCaption="True" Caption="Đề xuất" Index="1" RelativeSize="100" IsNewNode="True">
+                      <LayoutItem Id="Dexuats" ViewItem="Dexuats" Index="0" RelativeSize="100" IsNewNode="True" />
+                    </LayoutGroup>
+                    <LayoutGroup Id="MauBPs" ShowCaption="True" Caption="Bộ phận sử dụng" Index="2" RelativeSize="100" IsNewNode="True">
+                      <LayoutItem Id="MauBPs" ViewItem="MauBPs" Index="0" RelativeSize="100" IsNewNode="True" />
+                    </LayoutGroup>
+                  </TabbedGroup>
+                </LayoutGroup>
+                <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" RelativeSize="100" Caption="Nội dung" IsNewNode="True">
+                  <LayoutItem Id="Noidung" ViewItem="Noidung" Index="0" RelativeSize="100" ShowCaption="False" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Item4" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="2" RelativeSize="100" Caption="Ký duyệt" IsNewNode="True">
+                  <LayoutItem Id="Kyduyet" ViewItem="Kyduyet" Index="0" RelativeSize="100" ShowCaption="False" IsNewNode="True" />
+                </LayoutGroup>
+              </TabbedGroup>
+              <LayoutGroup Id="MauVanban_col1" Index="1" RelativeSize="21.18730808597748" Caption="MauVanban_col1" Removed="True">
+                <LayoutItem Id="ApdungCS" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="Tenmau" RelativeSize="25.446428571428573" Removed="True" />
+                <LayoutItem Id="Thuchien" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="MauVanban_col2" Index="1" RelativeSize="42.88638689866939" Caption="MauVanban_col2" Removed="True">
+                <LayoutItem Id="Chucvuxuly" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="Loai" RelativeSize="45.982142857142854" Index="0" Removed="True" />
+                <LayoutItem Id="Huy" RelativeSize="17.171717171717173" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" Index="1" RelativeSize="67.90419161676647" Removed="True">
+            <LayoutGroup Id="Dexuats" RelativeSize="100">
+              <LayoutItem Id="Dexuats" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="MauBPs" RelativeSize="100">
+              <LayoutItem Id="MauBPs" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="QuitrinhChuans" RelativeSize="100" Direction="Vertical" Caption="Qui trình duyệt">
+              <LayoutItem Id="QuitrinhChuans" ViewItem="QuitrinhChuans" Index="0" RelativeSize="100" IsNewNode="True" Removed="True" />
+            </LayoutGroup>
+          </TabbedGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="71.07142857142857" Caption="Nội dung" Removed="True">
+            <LayoutItem Id="Noidung" RelativeSize="100" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="MauVanban_QuitrinhChuans_ListView">
+      <Columns>
+        <ColumnInfo Id="SoTT" Width="64" />
+        <ColumnInfo Id="Chucvu" Width="350" />
+        <ColumnInfo Id="Songay" Width="133" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Nhansu_DetailView">
+      <Items>
+        <PropertyEditor Id="Donvi" PropertyName="Donvi" IsNewNode="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="24.47257383966245">
+            <LayoutGroup Id="Nhansu" RelativeSize="100" Caption="Ho Ten" ShowCaption="False">
+              <LayoutGroup Id="Nhansu_col1" RelativeSize="50">
+                <LayoutItem Id="Sothe" RelativeSize="20.689655172413794" Index="0" />
+                <LayoutItem Id="Gioitinh" Index="1" RelativeSize="14.942528735632184" />
+                <LayoutItem Id="HoTen" RelativeSize="14.942528735632184" Index="2" />
+                <LayoutItem Id="Email" Index="3" RelativeSize="14.942528735632184" ViewItem="Email" IsNewNode="True" />
+                <LayoutItem Id="CS" ViewItem="CS" Index="4" RelativeSize="14.942528735632184" IsNewNode="True" Removed="True" />
+                <LayoutItem Id="Donvi" ViewItem="Donvi" Index="5" RelativeSize="19.54022988505747" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Nhansu_col2" RelativeSize="50">
+                <LayoutItem Id="AnhCK" RelativeSize="79.3103448275862" Index="1" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="75.52742616033755">
+            <LayoutGroup Id="ChucvuNVs" RelativeSize="100">
+              <LayoutItem Id="ChucvuNVs" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Dexuats" RelativeSize="100">
+              <LayoutItem Id="Dexuats" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="DuyetDexuats" RelativeSize="100">
+              <LayoutItem Id="DuyetDexuats" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Nhansu_ListView" ShowAutoFilterRow="True" />
+    <ListView Id="Nhansu_LookupListView" ShowAutoFilterRow="True" />
+    <DetailView Id="Noidungphieu" CaptionColon=":" EnableCaptionColon="True" CaptionLocation="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" CaptionWordWrap="Default" EnableLayoutGroupImages="True" CustomizationEnabled="True" RequiredFieldMark="*" ClassName="Trinhky.Module.BusinessObjects.Phieudexuat" IsNewNode="True">
+      <Items IsNewNode="True">
+        <PropertyEditor Id="Chinhsuas" PropertyName="Chinhsuas" View="Phieudexuat_Chinhsuas_ListView" IsNewNode="True" />
+        <PropertyEditor Id="DuyetDexuats" PropertyName="DuyetDexuats" View="Phieudexuat_DuyetDexuats_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Noidung" PropertyName="Noidung" IsNewNode="True" />
+        <PropertyEditor Id="PhieudexuatFiles" PropertyName="PhieudexuatFiles" View="Phieudexuat_PhieudexuatFiles_ListView" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+          <LayoutGroup Id="SizeableEditors" Index="0" ShowCaption="False" Caption="Nội dung" RelativeSize="100" IsNewNode="True">
+            <LayoutItem Id="Noidung" ShowCaption="False" ViewItem="Noidung" Index="0" RelativeSize="100" IsNewNode="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="PhieuDaduyet_ListView" AllowDelete="False" AllowNew="False" />
+    <ListView Id="PhieuDahuy_ListView" AllowDelete="False" AllowNew="False" />
+    <DetailView Id="Phieudexuat_DetailView">
+      <Items>
+        <PropertyEditor Id="Chuthe" PropertyName="Chuthe" IsNewNode="True" />
+        <PropertyEditor Id="CS" PropertyName="CS" IsNewNode="True" />
+        <PropertyEditor Id="Donvi" PropertyName="Donvi" IsNewNode="True" />
+        <PropertyEditor Id="DSMau" Removed="True" />
+        <PropertyEditor Id="DSNVs" Removed="True" />
+        <PropertyEditor Id="Nhanvien" PropertyName="Nhanvien" IsNewNode="True" />
+        <PropertyEditor Id="Oid" PropertyName="Oid" IsNewNode="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="39.64577656675749">
+            <LayoutGroup Id="Phieudexuat" RelativeSize="100" Caption="Thông tin phiếu">
+              <LayoutGroup Id="Phieudexuat_col1" RelativeSize="49.834983498349835">
+                <LayoutItem Id="TenDexuat" RelativeSize="13.6" />
+                <LayoutItem Id="Oid" ViewItem="Oid" Index="1" RelativeSize="10.4" IsNewNode="True" />
+                <LayoutItem Id="Ngay" Index="2" RelativeSize="10.4" />
+                <LayoutItem Id="Nhanvien" ViewItem="Nhanvien" Index="3" RelativeSize="10.4" IsNewNode="True" />
+                <LayoutItem Id="Dagui" Index="4" RelativeSize="10.4" />
+                <LayoutItem Id="Ngayduyet" Index="5" RelativeSize="10.4" />
+                <LayoutItem Id="NguoiXuly" Index="6" RelativeSize="10.4" />
+                <LayoutItem Id="Nguoithuchien" Index="7" RelativeSize="10.4" />
+                <LayoutItem Id="Daxong" Index="8" RelativeSize="13.6" />
+              </LayoutGroup>
+              <LayoutGroup Id="Phieudexuat_col2" RelativeSize="50.165016501650165">
+                <LayoutItem Id="Ngayxong" RelativeSize="13.6" />
+                <LayoutItem Id="Trangthai" RelativeSize="10.4" />
+                <LayoutItem Id="TyleDuyet" RelativeSize="10.4" />
+                <LayoutItem Id="Phieuthuchien" RelativeSize="10.4" />
+                <LayoutItem Id="TrangthaiXL" RelativeSize="10.4" />
+                <LayoutItem Id="ThongtinPhieu" RelativeSize="10.4" />
+                <LayoutItem Id="Chuthe" ViewItem="Chuthe" Index="6" RelativeSize="10.4" IsNewNode="True" />
+                <LayoutItem Id="CS" ViewItem="CS" Index="7" RelativeSize="10.4" IsNewNode="True" />
+                <LayoutItem Id="Donvi" ViewItem="Donvi" Index="8" RelativeSize="13.6" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="30.653950953678475">
+            <LayoutItem Id="Yeucau" RelativeSize="33.333333333333336" />
+            <LayoutItem Id="Noidung" RelativeSize="32" />
+            <LayoutItem Id="Kyduyet" RelativeSize="34.666666666666664" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" RelativeSize="29.70027247956403">
+            <LayoutGroup Id="DuyetDexuats" RelativeSize="100" Index="0">
+              <LayoutItem Id="DuyetDexuats" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="PhieudexuatFiles" RelativeSize="100" Index="1">
+              <LayoutItem Id="PhieudexuatFiles" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Chinhsuas" RelativeSize="100" Index="2">
+              <LayoutItem Id="Chinhsuas" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="Chiases" RelativeSize="100" Index="3">
+              <LayoutItem Id="Chiases" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="DSNVs" RelativeSize="100" Index="4" Removed="True">
+              <LayoutItem Id="DSNVs" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="DSMau" RelativeSize="100" Removed="True">
+              <LayoutItem Id="DSMau" RelativeSize="100" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Phieudexuat_DuyetDexuats_ListView" AllowEdit="False" AllowDelete="False" AllowNew="False">
+      <Columns>
+        <ColumnInfo Id="SoTT" Width="104" />
+        <ColumnInfo Id="Handuyet" Width="112" />
+        <ColumnInfo Id="Ngayduyet" Width="117" />
+      </Columns>
+    </ListView>
+    <ListView Id="Phieudexuat_ListView" ShowAutoFilterRow="True">
+      <Columns>
+        <ColumnInfo Id="CS" Index="-1" />
+        <ColumnInfo Id="Donvi" Index="-1" />
+        <ColumnInfo Id="Mau" Index="-1" Removed="True" />
+        <ColumnInfo Id="Trangthai" Index="-1" />
+        <ColumnInfo Id="Dagui" Index="3" />
+        <ColumnInfo Id="Ngayduyet" Index="4" />
+        <ColumnInfo Id="NguoiXuly" Index="5" />
+        <ColumnInfo Id="Daxong" Index="6" />
+        <ColumnInfo Id="Ngayxong" Index="7" />
+        <ColumnInfo Id="TyleDuyet" Index="8" />
+        <ColumnInfo Id="Kyduyet" Removed="True" />
+        <ColumnInfo Id="Noidung" Removed="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="Phieuduyet_ListView" AllowDelete="False" AllowNew="False" />
+    <DetailView Id="Phieumoi" CaptionColon=":" EnableCaptionColon="True" CaptionLocation="Default" CaptionHorizontalAlignment="Default" CaptionVerticalAlignment="Default" CaptionWordWrap="Default" EnableLayoutGroupImages="True" CustomizationEnabled="True" RequiredFieldMark="*" ClassName="Trinhky.Module.BusinessObjects.Phieudexuat" IsNewNode="True">
+      <Items IsNewNode="True">
+        <PropertyEditor Id="CS" PropertyName="CS" IsNewNode="True" />
+        <PropertyEditor Id="Donvi" PropertyName="Donvi" LookupEditorMode="AllItems" IsNewNode="True" />
+        <PropertyEditor Id="Mau" PropertyName="Mau" IsNewNode="True" />
+        <PropertyEditor Id="Nhanvien" PropertyName="Nhanvien" AllowEdit="True" IsNewNode="True" />
+        <PropertyEditor Id="TenDexuat" PropertyName="TenDexuat" Caption="Tên đề xuất" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="13.27334083239595" IsNewNode="True">
+          <LayoutGroup Id="SizeableEditors" Index="0" ShowCaption="False" Caption="Nội dung" RelativeSize="100" IsNewNode="True">
+            <LayoutItem Id="Mau" ViewItem="Mau" Index="0" RelativeSize="28.8135593220339" IsNewNode="True" />
+            <LayoutItem Id="Donvi" ViewItem="Donvi" Index="1" RelativeSize="22.033898305084747" IsNewNode="True" />
+            <LayoutItem Id="CS" ViewItem="CS" Index="2" RelativeSize="22.033898305084747" IsNewNode="True" />
+            <LayoutItem Id="TenDexuat" ViewItem="TenDexuat" Index="3" RelativeSize="27.11864406779661" IsNewNode="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+        <LayoutItem Id="Nhanvien" ViewItem="Nhanvien" Index="1" RelativeSize="86.72665916760405" IsNewNode="True" />
+      </Layout>
+    </DetailView>
+    <ListView Id="ThongkeDexuat_ListView" AllowDelete="False" AllowNew="False" IsFooterVisible="True" ShowDetailView="False" DetailViewID="ThongkeDexuat_DetailView">
+      <Columns>
+        <ColumnInfo Id="Sodx">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="Chuaduyet">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="Dangduyet">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="Huy">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="Daduyet">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="Daxong">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+      </Columns>
+    </ListView>
+    <ListView Id="ThongkeDexuatMau_ListView" AllowDelete="False" AllowNew="False" ShowDetailView="False" IsFooterVisible="True">
+      <Columns>
+        <ColumnInfo Id="Sodx">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="Chuaduyet">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="Dangduyet">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="Huy">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="Daduyet">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="Daxong">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+      </Columns>
+    </ListView>
+    <ListView Id="ThongkeDuyet_ListView" AllowDelete="False" AllowNew="False" ShowDetailView="False" IsFooterVisible="True">
+      <Columns>
+        <ColumnInfo Id="Sodx">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="Chuaduyet">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="Chuaduyet2">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="Huy">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="Dunghan">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+        <ColumnInfo Id="Quahan">
+          <Summary>
+            <ColumnSummaryItem Id="Summary0" SummaryType="Sum" IsNewNode="True" />
+          </Summary>
+        </ColumnInfo>
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

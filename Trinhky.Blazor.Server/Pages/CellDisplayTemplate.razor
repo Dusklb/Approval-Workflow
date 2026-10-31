@@ -1,0 +1,33 @@
+﻿
+@using Trinhky.Module
+@using Trinhky.Module.BusinessObjects
+
+@code {
+    public static RenderFragment<GridDataColumnCellDisplayTemplateContext> GetNonZero() => (item) => {
+        object nullobj = null;
+        if (tmLib.CommonLib.CDouble(item.Value)==0)
+        {
+            return@<div>@nullobj</div>;
+                
+        }
+        else
+            return@<div>@item.DisplayText</div>;
+
+        //var Data = item.DataItem;
+        //IGridDataColumn col = item.DataColumn;
+        //if(Data is sLophocSV dk)
+        //{
+        //    IGridDataColumn col = item.DataColumn;
+        //    if (vuERPCom.CDouble(dk.GetMemberValue(col.FieldName))==0)
+        //    {
+        //        return@<div>@nullobj</div>;
+                
+        //    }
+        //    else
+        //        return@<div>@dk.GetMemberValue(col.FieldName)</div>;
+           
+        //}
+        //else
+        //    return@<div>@item</div>;
+    };
+}

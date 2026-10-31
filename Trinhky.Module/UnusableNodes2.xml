@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="Nhansu_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Nhansu">
+              <LayoutGroup Id="Nhansu_col1">
+                <LayoutItem Id="CS" ViewItem="CS" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Phieudexuat_DetailView">
+      <Items Id="Items">
+        <PropertyEditor Id="Donvi" LookupEditorMode="AllItems" />
+      </Items>
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SizeableEditors">
+            <TabbedGroup Id="Item2">
+              <LayoutGroup Id="Item3">
+                <LayoutGroup Id="Phieudexuat">
+                  <LayoutGroup Id="Phieudexuat_col1">
+                    <LayoutItem Id="CS" ViewItem="CS" />
+                    <LayoutItem Id="Donvi" ViewItem="Donvi" />
+                    <LayoutItem Id="Mau" ViewItem="Mau" />
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+            </TabbedGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

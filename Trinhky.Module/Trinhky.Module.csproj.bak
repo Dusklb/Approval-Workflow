@@ -1,0 +1,165 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <CheckEolTargetFramework>false</CheckEolTargetFramework>
+    <Deterministic>false</Deterministic>
+    <AssemblyVersion>1.0.*</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Configurations>Debug;Release;EasyTest</Configurations>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Platforms>AnyCPU;x86</Platforms>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="BusinessObjects\Noinhan.cs" />
+    <Compile Remove="Controllers\DexuatController.cs" />
+    <Compile Remove="Controllers\MailController.cs" />
+    <Compile Remove="Controllers\PhieuduyetController.cs" />
+    <Compile Remove="Controllers\RoleGeneratorController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Images\back.svg" />
+    <None Remove="Images\bophan.svg" />
+    <None Remove="Images\button-ok.svg" />
+    <None Remove="Images\checkdata.svg" />
+    <None Remove="Images\checkdb.svg" />
+    <None Remove="Images\chinhsua.svg" />
+    <None Remove="Images\choduyet.svg" />
+    <None Remove="Images\chonduyet.svg" />
+    <None Remove="Images\choxuly.svg" />
+    <None Remove="Images\chucvu.svg" />
+    <None Remove="Images\coso.svg" />
+    <None Remove="Images\daduyet.svg" />
+    <None Remove="Images\dahuy.svg" />
+    <None Remove="Images\database-save.svg" />
+    <None Remove="Images\dataimport.svg" />
+    <None Remove="Images\deldx.svg" />
+    <None Remove="Images\dexuat.svg" />
+    <None Remove="Images\dinhkem.svg" />
+    <None Remove="Images\documents.svg" />
+    <None Remove="Images\dunghan.svg" />
+    <None Remove="Images\duyet.svg" />
+    <None Remove="Images\dxmoi.svg" />
+    <None Remove="Images\editbophan.svg" />
+    <None Remove="Images\export-pdf.svg" />
+    <None Remove="Images\giaoviec.svg" />
+    <None Remove="Images\gui.svg" />
+    <None Remove="Images\help.svg" />
+    <None Remove="Images\import.svg" />
+    <None Remove="Images\lapphieu.svg" />
+    <None Remove="Images\mailbox.svg" />
+    <None Remove="Images\mauvb.svg" />
+    <None Remove="Images\nhanvien.svg" />
+    <None Remove="Images\nhom.svg" />
+    <None Remove="Images\phanloai.svg" />
+    <None Remove="Images\products.svg" />
+    <None Remove="Images\quahan.svg" />
+    <None Remove="Images\ReadMe.txt" />
+    <None Remove="Images\share.svg" />
+    <None Remove="Images\signature.svg" />
+    <None Remove="Images\steps.svg" />
+    <None Remove="Images\thembophan.svg" />
+    <None Remove="Images\tkdexuat.svg" />
+    <None Remove="Images\tkduyet.svg" />
+    <None Remove="Images\totrinh.svg" />
+    <None Remove="Images\user-add.svg" />
+    <None Remove="Images\user-edit.svg" />
+    <None Remove="Images\userdel.svg" />
+    <None Remove="Images\usernew.svg" />
+    <None Remove="Images\uyquyen.svg" />
+    <None Remove="Images\work.svg" />
+    <None Remove="Model.DesignedDiffs.Localization.vi.xafml" />
+    <None Remove="Model.DesignedDiffs.xafml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\button-ok.svg" />
+    <EmbeddedResource Include="Images\checkdata.svg" />
+    <EmbeddedResource Include="Images\chonduyet.svg" />
+    <EmbeddedResource Include="Images\dataimport.svg" />
+    <EmbeddedResource Include="Images\giaoviec.svg" />
+    <EmbeddedResource Include="Images\nhom.svg" />
+    <EmbeddedResource Include="Images\products.svg" />
+    <EmbeddedResource Include="Model.DesignedDiffs.Localization.vi.xafml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\back.svg" />
+    <EmbeddedResource Include="Images\bophan.svg" />
+    <EmbeddedResource Include="Images\checkdb.svg" />
+    <EmbeddedResource Include="Images\chinhsua.svg" />
+    <EmbeddedResource Include="Images\choduyet.svg" />
+    <EmbeddedResource Include="Images\choxuly.svg" />
+    <EmbeddedResource Include="Images\chucvu.svg" />
+    <EmbeddedResource Include="Images\coso.svg" />
+    <EmbeddedResource Include="Images\daduyet.svg" />
+    <EmbeddedResource Include="Images\dahuy.svg" />
+    <EmbeddedResource Include="Images\database-save.svg" />
+    <EmbeddedResource Include="Images\deldx.svg" />
+    <EmbeddedResource Include="Images\dexuat.svg" />
+    <EmbeddedResource Include="Images\dinhkem.svg" />
+    <EmbeddedResource Include="Images\documents.svg" />
+    <EmbeddedResource Include="Images\dunghan.svg" />
+    <EmbeddedResource Include="Images\duyet.svg" />
+    <EmbeddedResource Include="Images\dxmoi.svg" />
+    <EmbeddedResource Include="Images\editbophan.svg" />
+    <EmbeddedResource Include="Images\export-pdf.svg" />
+    <EmbeddedResource Include="Images\gui.svg" />
+    <EmbeddedResource Include="Images\help.svg" />
+    <EmbeddedResource Include="Images\import.svg" />
+    <EmbeddedResource Include="Images\lapphieu.svg" />
+    <EmbeddedResource Include="Images\mailbox.svg" />
+    <EmbeddedResource Include="Images\mauvb.svg" />
+    <EmbeddedResource Include="Images\nhanvien.svg" />
+    <EmbeddedResource Include="Images\phanloai.svg" />
+    <EmbeddedResource Include="Images\quahan.svg" />
+    <EmbeddedResource Include="Images\ReadMe.txt" />
+    <EmbeddedResource Include="Images\share.svg" />
+    <EmbeddedResource Include="Images\signature.svg" />
+    <EmbeddedResource Include="Images\steps.svg" />
+    <EmbeddedResource Include="Images\thembophan.svg" />
+    <EmbeddedResource Include="Images\tkdexuat.svg" />
+    <EmbeddedResource Include="Images\tkduyet.svg" />
+    <EmbeddedResource Include="Images\totrinh.svg" />
+    <EmbeddedResource Include="Images\user-add.svg" />
+    <EmbeddedResource Include="Images\user-edit.svg" />
+    <EmbeddedResource Include="Images\userdel.svg" />
+    <EmbeddedResource Include="Images\usernew.svg" />
+    <EmbeddedResource Include="Images\uyquyen.svg" />
+    <EmbeddedResource Include="Images\work.svg" />
+    <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DevExpress.ExpressApp" Version="23.1.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Chart" Version="23.1.6" />
+    <PackageReference Include="DevExpress.ExpressApp.CloneObject.Xpo" Version="23.1.6" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="23.1.6" />
+    <PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance" Version="23.1.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="23.1.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Objects" Version="23.1.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Office" Version="23.1.6" />
+    <PackageReference Include="DevExpress.ExpressApp.ReportsV2" Version="23.1.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Security.Xpo" Version="23.1.6" />
+    <PackageReference Include="DevExpress.ExpressApp.TreeListEditors" Version="23.1.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Validation" Version="23.1.6" />
+    <PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule" Version="23.1.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="23.1.6" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="23.1.6" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="23.1.6" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\tmLib6\tmLib6.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Controllers\ChangePassInfo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="UnusableNodes.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+    <None Update="UnusableNodes2.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+    </None>
+  </ItemGroup>
+</Project>

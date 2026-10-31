@@ -1,0 +1,53 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Trinhky.Blazor.Server
+build_property.RootNamespace = Trinhky.Blazor.Server
+build_property.ProjectDir = E:\đồ án tốt nghiệp\TrinhkyAI\Trinhky\Trinhky.Blazor.Server\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = E:\đồ án tốt nghiệp\TrinhkyAI\Trinhky\Trinhky.Blazor.Server
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[E:/đồ án tốt nghiệp/TrinhkyAI/Trinhky/Trinhky.Blazor.Server/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/đồ án tốt nghiệp/TrinhkyAI/Trinhky/Trinhky.Blazor.Server/Editors/ProgressBarRenderer.razor]
+build_metadata.AdditionalFiles.TargetPath = RWRpdG9yc1xQcm9ncmVzc0JhclJlbmRlcmVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/đồ án tốt nghiệp/TrinhkyAI/Trinhky/Trinhky.Blazor.Server/Pages/CellDisplayTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2VsbERpc3BsYXlUZW1wbGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/đồ án tốt nghiệp/TrinhkyAI/Trinhky/Trinhky.Blazor.Server/Pages/Dinhkem.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGluaGtlbS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/đồ án tốt nghiệp/TrinhkyAI/Trinhky/Trinhky.Blazor.Server/Pages/Help.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSGVscC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/đồ án tốt nghiệp/TrinhkyAI/Trinhky/Trinhky.Blazor.Server/Pages/ViewDX.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld0RYLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/đồ án tốt nghiệp/TrinhkyAI/Trinhky/Trinhky.Blazor.Server/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/đồ án tốt nghiệp/TrinhkyAI/Trinhky/Trinhky.Blazor.Server/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

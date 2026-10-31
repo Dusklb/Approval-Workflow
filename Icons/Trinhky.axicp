@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AxialisIconCollection>
+  <Name>Trinhky</Name>
+  <Icon>
+    <Name>hoanthanh</Name>
+    <StockIconName>document-color-green-filled.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Basic</StockIconSet>
+    <StockOverlayName>ok-filled.axvi</StockOverlayName>
+    <ResourceIDValue>146</ResourceIDValue>
+    <ResourceID>ID_DOCUMENT-COLOR-GREEN-FILLED-OK-FILLED</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>chonduyet</Name>
+    <StockIconName>people-customer-unknown.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Business</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>100</ResourceIDValue>
+    <ResourceID>ID_CHONDUYET</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>giaoviec</Name>
+    <StockIconName>bill.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Business</StockIconSet>
+    <StockOverlayName>execute-filled.axvi</StockOverlayName>
+    <ResourceIDValue>101</ResourceIDValue>
+    <ResourceID>ID_GIAOVIEC</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>deldx</Name>
+    <StockIconName>signature.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Web and Email</StockIconSet>
+    <StockOverlayName>cancel.axvi</StockOverlayName>
+    <ResourceIDValue>102</ResourceIDValue>
+    <ResourceID>ID_DELDX</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>uyquyen</Name>
+    <StockIconName>signature.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Web and Email</StockIconSet>
+    <StockOverlayName>arrow-right.axvi</StockOverlayName>
+    <ResourceIDValue>103</ResourceIDValue>
+    <ResourceID>ID_UYQUYEN</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>2</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>back</Name>
+    <StockIconName>history-circle-back-blue.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Web and Email</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>104</ResourceIDValue>
+    <ResourceID>ID_BACK</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>help</Name>
+    <StockIconName>file-help-filled.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Development</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>105</ResourceIDValue>
+    <ResourceID>ID_HELP</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>share</Name>
+    <StockIconName>share-arrow.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Basic</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>106</ResourceIDValue>
+    <ResourceID>ID_SHARE</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>work</Name>
+    <StockIconName>work.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Project Management</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>107</ResourceIDValue>
+    <ResourceID>ID_WORK</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>quahan</Name>
+    <StockIconName>document-color-red-filled.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Basic</StockIconSet>
+    <StockOverlayName>time.axvi</StockOverlayName>
+    <ResourceIDValue>108</ResourceIDValue>
+    <ResourceID>ID_QUAHAN</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>choduyet</Name>
+    <StockIconName>document-color-blue-filled.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Basic</StockIconSet>
+    <StockOverlayName>time.axvi</StockOverlayName>
+    <ResourceIDValue>109</ResourceIDValue>
+    <ResourceID>ID_CHODUYET</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>tkdexuat</Name>
+    <StockIconName>document-chart.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Spreadsheet</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>110</ResourceIDValue>
+    <ResourceID>ID_TKDEXUAT</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>tkduyet</Name>
+    <StockIconName>document-chart.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Basic</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>111</ResourceIDValue>
+    <ResourceID>ID_TKDUYET</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>dxmoi</Name>
+    <StockIconName>document-color-blue.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Basic</StockIconSet>
+    <StockOverlayName>new.axvi</StockOverlayName>
+    <ResourceIDValue>112</ResourceIDValue>
+    <ResourceID>ID_DXMOI</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>chinhsua</Name>
+    <StockIconName>document-header.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Word Processing</StockIconSet>
+    <StockOverlayName>edit-filled.axvi</StockOverlayName>
+    <ResourceIDValue>113</ResourceIDValue>
+    <ResourceID>ID_CHINHSUA</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>dinhkem</Name>
+    <StockIconName>document-header.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Word Processing</StockIconSet>
+    <StockOverlayName>attach.axvi</StockOverlayName>
+    <ResourceIDValue>114</ResourceIDValue>
+    <ResourceID>ID_DINHKEM</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>gui</Name>
+    <StockIconName>document-color-blue.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Basic</StockIconSet>
+    <StockOverlayName>upload.axvi</StockOverlayName>
+    <ResourceIDValue>115</ResourceIDValue>
+    <ResourceID>ID_GUI</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>mailbox</Name>
+    <StockIconName>mailbox.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Web and Email</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>116</ResourceIDValue>
+    <ResourceID>ID_MAILBOX</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>choxuly</Name>
+    <StockIconName>document-header.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Word Processing</StockIconSet>
+    <StockOverlayName>bookmark-filled.axvi</StockOverlayName>
+    <ResourceIDValue>117</ResourceIDValue>
+    <ResourceID>ID_CHOXULY</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>dahuy</Name>
+    <StockIconName>document-header.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Word Processing</StockIconSet>
+    <StockOverlayName>error-filled.axvi</StockOverlayName>
+    <ResourceIDValue>118</ResourceIDValue>
+    <ResourceID>ID_DAHUY</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>daduyet</Name>
+    <StockIconName>document-header.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Word Processing</StockIconSet>
+    <StockOverlayName>ok-filled.axvi</StockOverlayName>
+    <ResourceIDValue>119</ResourceIDValue>
+    <ResourceID>ID_DADUYET</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>userdel</Name>
+    <StockIconName>user-unknown.axvi</StockIconName>
+    <StockIconFamily>Axialis Line Design</StockIconFamily>
+    <StockIconSet>User Management</StockIconSet>
+    <StockOverlayName>error.axvi</StockOverlayName>
+    <ResourceIDValue>120</ResourceIDValue>
+    <ResourceID>ID_USERDEL</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>0</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>usernew</Name>
+    <StockIconName>user-unknown.axvi</StockIconName>
+    <StockIconFamily>Axialis Line Design</StockIconFamily>
+    <StockIconSet>User Management</StockIconSet>
+    <StockOverlayName>new.axvi</StockOverlayName>
+    <ResourceIDValue>121</ResourceIDValue>
+    <ResourceID>ID_USERNEW</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>0</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>choduyet</Name>
+    <StockIconName>document-header.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Word Processing</StockIconSet>
+    <StockOverlayName>time.axvi</StockOverlayName>
+    <ResourceIDValue>122</ResourceIDValue>
+    <ResourceID>ID_CHODUYET_2</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>export-pdf</Name>
+    <StockIconName>export-pdf.axvi</StockIconName>
+    <StockIconFamily>Axialis Line Design</StockIconFamily>
+    <StockIconSet>Word Processing</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>123</ResourceIDValue>
+    <ResourceID>ID_EXPORT-PDF</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>0</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>coso</Name>
+    <StockIconName>bank.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Business</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>124</ResourceIDValue>
+    <ResourceID>ID_COSO</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>checkdb</Name>
+    <StockIconName>database.axvi</StockIconName>
+    <StockIconFamily>Axialis Line Design</StockIconFamily>
+    <StockIconSet>Database</StockIconSet>
+    <StockOverlayName>execute.axvi</StockOverlayName>
+    <ResourceIDValue>125</ResourceIDValue>
+    <ResourceID>ID_CHECKDB</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>0</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>database-save</Name>
+    <StockIconName>database.axvi</StockIconName>
+    <StockIconFamily>Axialis Line Design</StockIconFamily>
+    <StockIconSet>Database</StockIconSet>
+    <StockOverlayName>save.axvi</StockOverlayName>
+    <ResourceIDValue>126</ResourceIDValue>
+    <ResourceID>ID_DATABASE-SAVE</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>0</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>import</Name>
+    <StockIconName>datasheet-import.axvi</StockIconName>
+    <StockIconFamily>Axialis Line Design</StockIconFamily>
+    <StockIconSet>Database</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>127</ResourceIDValue>
+    <ResourceID>ID_IMPORT</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>0</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>documents</Name>
+    <StockIconName>documents.axvi</StockIconName>
+    <StockIconFamily>Axialis Line Design</StockIconFamily>
+    <StockIconSet>Basic</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>128</ResourceIDValue>
+    <ResourceID>ID_DOCUMENTS</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>0</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>duyet</Name>
+    <StockIconName>execute.axvi</StockIconName>
+    <StockIconFamily>Axialis Line Design</StockIconFamily>
+    <StockIconSet>Basic</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>129</ResourceIDValue>
+    <ResourceID>ID_DUYET</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>0</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>lapphieu</Name>
+    <StockIconName>document-header.axvi</StockIconName>
+    <StockIconFamily>Axialis Line Design</StockIconFamily>
+    <StockIconSet>Word Processing</StockIconSet>
+    <StockOverlayName>edit.axvi</StockOverlayName>
+    <ResourceIDValue>130</ResourceIDValue>
+    <ResourceID>ID_LAPPHIEU</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>0</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>giangvien</Name>
+    <StockIconName>people-teacher.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Education</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>131</ResourceIDValue>
+    <ResourceID>ID_GIANGVIEN</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>editbophan</Name>
+    <StockIconName>folder.axvi</StockIconName>
+    <StockIconFamily>Axialis Line Design</StockIconFamily>
+    <StockIconSet>Basic</StockIconSet>
+    <StockOverlayName>edit.axvi</StockOverlayName>
+    <ResourceIDValue>132</ResourceIDValue>
+    <ResourceID>ID_EDITBOPHAN</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>0</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>thembophan</Name>
+    <StockIconName>folder.axvi</StockIconName>
+    <StockIconFamily>Axialis Line Design</StockIconFamily>
+    <StockIconSet>Basic</StockIconSet>
+    <StockOverlayName>add.axvi</StockOverlayName>
+    <ResourceIDValue>133</ResourceIDValue>
+    <ResourceID>ID_THEMBOPHAN</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>0</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>user-add</Name>
+    <StockIconName>user.axvi</StockIconName>
+    <StockIconFamily>Axialis Line Design</StockIconFamily>
+    <StockIconSet>Basic</StockIconSet>
+    <StockOverlayName>add.axvi</StockOverlayName>
+    <ResourceIDValue>134</ResourceIDValue>
+    <ResourceID>ID_USER-ADD</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>0</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>user-edit</Name>
+    <StockIconName>user.axvi</StockIconName>
+    <StockIconFamily>Axialis Line Design</StockIconFamily>
+    <StockIconSet>Basic</StockIconSet>
+    <StockOverlayName>edit.axvi</StockOverlayName>
+    <ResourceIDValue>135</ResourceIDValue>
+    <ResourceID>ID_USER-EDIT</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>0</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>bophan</Name>
+    <StockIconName>folders-tree-filled.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Documents and Folders</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>136</ResourceIDValue>
+    <ResourceID>ID_BOPHAN</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>nhanvien</Name>
+    <StockIconName>people-man-7-filled.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>User Management</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>137</ResourceIDValue>
+    <ResourceID>ID_NHANVIEN</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>mauvb</Name>
+    <StockIconName>document-template.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Word Processing</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>138</ResourceIDValue>
+    <ResourceID>ID_MAUVB</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>quitrinh</Name>
+    <StockIconName>processes-filled.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Development</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>139</ResourceIDValue>
+    <ResourceID>ID_QUITRINH</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>steps</Name>
+    <StockIconName>footsteps.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Basic</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>140</ResourceIDValue>
+    <ResourceID>ID_STEPS</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>chucvu</Name>
+    <StockIconName>business-card-man.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Business</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>141</ResourceIDValue>
+    <ResourceID>ID_CHUCVU</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>signature</Name>
+    <StockIconName>signature.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Word Processing</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>142</ResourceIDValue>
+    <ResourceID>ID_SIGNATURE</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>4</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>totrinh</Name>
+    <StockIconName>document-flag-filled.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Documents and Folders</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>143</ResourceIDValue>
+    <ResourceID>ID_TOTRINH</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>phanloai</Name>
+    <StockIconName>document-type-note.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Documents and Folders</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>144</ResourceIDValue>
+    <ResourceID>ID_PHANLOAI</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+  <Icon>
+    <Name>dexuat</Name>
+    <StockIconName>document-edit.axvi</StockIconName>
+    <StockIconFamily>Axialis Office Pro</StockIconFamily>
+    <StockIconSet>Documents and Folders</StockIconSet>
+    <StockOverlayName></StockOverlayName>
+    <ResourceIDValue>145</ResourceIDValue>
+    <ResourceID>ID_DEXUAT</ResourceID>
+    <OverlayOffset>1</OverlayOffset>
+    <Opacity>255</Opacity>
+    <ColorizeMode>1</ColorizeMode>
+    <StockOverlayPos>25165833</StockOverlayPos>
+    <DarkMode>0</DarkMode>
+  </Icon>
+</AxialisIconCollection>

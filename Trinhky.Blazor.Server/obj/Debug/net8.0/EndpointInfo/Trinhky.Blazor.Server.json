@@ -1,0 +1,507 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Trinhky API",
+    "description": "Use AddXafWebApi(options) in the Trinhky.Blazor.Server\\Startup.cs file to make Business Objects available in the Web API.",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Authentication/Authenticate": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Checks if the user with the specified logon parameters exists in the database. If it does, authenticates this user.",
+        "description": "Refer to the following help topic for more information on authentication methods in the XAF Security System: <a href='https://docs.devexpress.com/eXpressAppFramework/119064/data-security-and-safety/security-system/authentication'>Authentication</a>.",
+        "operationId": "POST_api/Authentication/Authenticate",
+        "requestBody": {
+          "description": "For example: <br /> { \"userName\": \"Admin\", \"password\": \"\" }",
+          "content": {
+            "application/json;odata.metadata=minimal;odata.streaming=true": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationStandardLogonParameters"
+              }
+            },
+            "application/json;odata.metadata=minimal;odata.streaming=false": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationStandardLogonParameters"
+              }
+            },
+            "application/json;odata.metadata=minimal": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationStandardLogonParameters"
+              }
+            },
+            "application/json;odata.metadata=full;odata.streaming=true": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationStandardLogonParameters"
+              }
+            },
+            "application/json;odata.metadata=full;odata.streaming=false": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationStandardLogonParameters"
+              }
+            },
+            "application/json;odata.metadata=full": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationStandardLogonParameters"
+              }
+            },
+            "application/json;odata.metadata=none;odata.streaming=true": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationStandardLogonParameters"
+              }
+            },
+            "application/json;odata.metadata=none;odata.streaming=false": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationStandardLogonParameters"
+              }
+            },
+            "application/json;odata.metadata=none": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationStandardLogonParameters"
+              }
+            },
+            "application/json;odata.streaming=true": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationStandardLogonParameters"
+              }
+            },
+            "application/json;odata.streaming=false": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationStandardLogonParameters"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationStandardLogonParameters"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationStandardLogonParameters"
+              }
+            },
+            "text/plain": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationStandardLogonParameters"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationStandardLogonParameters"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationStandardLogonParameters"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Localization/ActionCaption": {
+      "get": {
+        "tags": [
+          "Localization"
+        ],
+        "summary": "Gets the specified Action's caption localized according to the specified language or current browser language settings.",
+        "description": "For more information, refer to the following article: <a href='https://docs.devexpress.com/eXpressAppFramework/403982/backend-web-api-service/access-localization-from-web-api-controller'>Obtain Localization Strings from a Web API Controller Endpoint</a>.",
+        "operationId": "GET_api/Localization/ActionCaption",
+        "parameters": [
+          {
+            "name": "actionName",
+            "in": "query",
+            "description": "The identifier of the Action. You can find this identifier in the <b>Id</b> property of the Model Editor's <b>Actions | &lt;ActionName&gt;</b> node. <br/>Example: 'AddNewItem'",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "The localization language. <br/> Example: 'de-DE'",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "en-US"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Localization/ClassCaption": {
+      "get": {
+        "tags": [
+          "Localization"
+        ],
+        "summary": "Gets the specified business class caption localized according to the specified language or current browser language settings.",
+        "description": "For more information, refer to the following article: <a href='https://docs.devexpress.com/eXpressAppFramework/403982/backend-web-api-service/access-localization-from-web-api-controller'>Obtain Localization Strings from a Web API Controller Endpoint</a>.",
+        "operationId": "GET_api/Localization/ClassCaption",
+        "parameters": [
+          {
+            "name": "classFullName",
+            "in": "query",
+            "description": "The fully-qualified name of the business class. You can find this name in the <b>Name</b> property of the Model Editor's <b>BOModel | &lt;Class&gt;</b> node. <br/>Example: 'MainDemo.Module.BusinessObjects.Employee'",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "The localization language. <br/> Example: 'de-DE'",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "en-US"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Localization/MemberCaption": {
+      "get": {
+        "tags": [
+          "Localization"
+        ],
+        "summary": "Gets the specified member's caption localized according to the specified language or current browser language settings.",
+        "description": "For more information, refer to the following article: <a href='https://docs.devexpress.com/eXpressAppFramework/403982/backend-web-api-service/access-localization-from-web-api-controller'>Obtain Localization Strings from a Web API Controller Endpoint</a>.",
+        "operationId": "GET_api/Localization/MemberCaption",
+        "parameters": [
+          {
+            "name": "classFullName",
+            "in": "query",
+            "description": "The fully-qualified name of the business class that contains the target member. You can find this name in the <b>Name</b> property of the Model Editor's <b>BOModel | &lt;Class&gt;</b> node.  <br/>Example: 'MainDemo.Module.BusinessObjects.Employee'",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "memberName",
+            "in": "query",
+            "description": " The name of the member. You can find this name in the <b>Name</b> property of the Model Editor's <b>BOModel | &lt;Class&gt; | OwnMembers | &lt;Member&gt;</b> node. <br/>Example: 'FirstName'",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "The localization language. <br/> Example: 'de-DE'",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "en-US"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Localization/LocalizedText": {
+      "get": {
+        "tags": [
+          "Localization"
+        ],
+        "summary": "Gets the specified localization item's value according to the specified language or current browser language settings.",
+        "description": "For more information, refer to the following article: <a href='https://docs.devexpress.com/eXpressAppFramework/403982/backend-web-api-service/access-localization-from-web-api-controller'>Obtain Localization Strings from a Web API Controller Endpoint</a>.",
+        "operationId": "GET_api/Localization/LocalizedText",
+        "parameters": [
+          {
+            "name": "groupPath",
+            "in": "query",
+            "description": "The name of the localization group that contains the target localization item. You can find this path in the <b>Name</b> property of the Model Editor's <b>Localization | &lt;LocalizationGroup&gt;</b> node. <br/>Example: 'Messages'",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "itemName",
+            "in": "query",
+            "description": "The name of the localization item. You can find this name in the <b>Name</b> property of the Model Editor's <b>Localization | &lt;LocalizationGroup&gt; | &lt;LocalizationItem&gt;</b> node. <br/>Example: 'CannotUploadFile'",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "The localization language. <br/> Example: 'de-DE'",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "en-US"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/MediaFile/DownloadStream": {
+      "get": {
+        "tags": [
+          "MediaFile"
+        ],
+        "summary": "Gets BLOB data from the specified property of a business object.",
+        "description": "For more information, refer to the following article: <a href='https://docs.devexpress.com/eXpressAppFramework/404207/backend-web-api-service/obtain-blob-data-from-a-web-api-controller-endpoint'>Obtain BLOB Data from a Web API Controller Endpoint</a>.",
+        "operationId": "GET_api/MediaFile/DownloadStream",
+        "parameters": [
+          {
+            "name": "objectType",
+            "in": "query",
+            "description": "An object's type name in either the short or fully-qualified format. <br/>Examples: 'Employee', 'MainDemo.Module.BusinessObjects.Employee'",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "objectKey",
+            "in": "query",
+            "description": "A primary key value that uniquely identifies an object. <br/>Example: 'C4890105-CF95-4DFA-8083-08DACE0F086B'",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "propertyName",
+            "in": "query",
+            "description": "The name of an object's property that contains BLOB data. <br/>Example: 'Photo'",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/odata/$metadata": {
+      "get": {
+        "tags": [
+          "Metadata"
+        ],
+        "operationId": "GET_api/odata/$metadata",
+        "responses": {
+          "200": {
+            "description": "The IEdmModel representing $metadata"
+          }
+        }
+      }
+    },
+    "/api/odata": {
+      "get": {
+        "tags": [
+          "Metadata"
+        ],
+        "operationId": "GET_api/odata",
+        "responses": {
+          "200": {
+            "description": "The service document for the service"
+          }
+        }
+      }
+    },
+    "/api/Report/DownloadByKey({key})": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "operationId": "GET_api/Report/DownloadByKey({key})",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fileType",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ExportTarget"
+            }
+          },
+          {
+            "name": "criteria",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Report/DownloadByName({displayName})": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "operationId": "GET_api/Report/DownloadByName({displayName})",
+        "parameters": [
+          {
+            "name": "displayName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fileType",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/ExportTarget"
+            }
+          },
+          {
+            "name": "criteria",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Upload/UploadFile": {
+      "post": {
+        "tags": [
+          "Upload"
+        ],
+        "operationId": "POST_api/Upload/UploadFile",
+        "parameters": [
+          {
+            "name": "chunkMetadata",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "folder",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ImageUpload": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "ImageUpload": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AuthenticationStandardLogonParameters": {
+        "type": "object",
+        "properties": {
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExportTarget": {
+        "enum": [
+          "Xls",
+          "Xlsx",
+          "Html",
+          "Mht",
+          "Pdf",
+          "Text",
+          "Rtf",
+          "Csv",
+          "Image",
+          "Docx"
+        ],
+        "type": "string"
+      }
+    },
+    "securitySchemes": {
+      "JWT": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "JWT": [ ]
+    }
+  ]
+}

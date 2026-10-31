@@ -1,0 +1,520 @@
+﻿using DevExpress.Data.Filtering;
+using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.ConditionalAppearance;
+using DevExpress.ExpressApp.DC;
+using DevExpress.ExpressApp.Editors;
+using DevExpress.ExpressApp.Model;
+using DevExpress.Persistent.Base;
+using DevExpress.Persistent.Validation;
+using DevExpress.Xpo;
+using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Linq;
+
+namespace Trinhky.Module.BusinessObjects
+{
+    [DefaultClassOptions]
+    [System.ComponentModel.DisplayName("Phiếu đề xuất")]
+    [ImageName("dexuat")]
+    [DefaultProperty("TenDexuat")]
+    [DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
+    [DeferredDeletion(false)]
+    //[Persistent("DatabaseTableName")]
+    // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
+    [Appearance("ColorDetailViewNhap1", AppearanceItemType = "LayoutItem", TargetItems = "Donvi", Criteria = "1=1", Context = "DetailView",
+        FontColor = "Red", FontStyle = System.Drawing.FontStyle.Bold, Priority = 1)]
+    [Appearance("ColorDetailViewNhap2", AppearanceItemType = "LayoutItem", TargetItems = "CS", Criteria = "1=1", Context = "DetailView",
+        FontColor = "Red", FontStyle = System.Drawing.FontStyle.Bold, Priority = 1)]
+    [Appearance("ColorDetailViewNhap3", AppearanceItemType = "LayoutItem", TargetItems = "Mau", Criteria = "1=1", Context = "DetailView",
+        FontColor = "Red", FontStyle = System.Drawing.FontStyle.Bold, Priority = 1)]
+
+    [Appearance("ColorListView1", AppearanceItemType = "ViewItem", TargetItems = "TenDexuat", Criteria = "Trangthai=2", Context = "ListView",
+        FontColor = "Blue", Priority = 1)]
+    [Appearance("ColorListView2", AppearanceItemType = "ViewItem", TargetItems = "TenDexuat", Criteria = "Trangthai=3", Context = "ListView",
+        FontColor = "Blue", FontStyle = System.Drawing.FontStyle.Bold, Priority = 1)]
+    [Appearance("ColorListView3", AppearanceItemType = "ViewItem", TargetItems = "TenDexuat", Criteria = "Trangthai=1", Context = "ListView",
+        FontColor = "Red", FontStyle = System.Drawing.FontStyle.Strikeout, Priority = 1)]
+
+    [Appearance("ColorListView4", AppearanceItemType = "ViewItem", TargetItems = "Trangthai", Criteria = "Trangthai=2", Context = "ListView",
+        FontColor = "Blue", Priority = 1)]
+    [Appearance("ColorListView5", AppearanceItemType = "ViewItem", TargetItems = "Trangthai", Criteria = "Trangthai=3", Context = "ListView",
+        FontColor = "Blue", FontStyle = System.Drawing.FontStyle.Bold, Priority = 1)]
+    [Appearance("ColorListView6", AppearanceItemType = "ViewItem", TargetItems = "Trangthai", Criteria = "Trangthai=1", Context = "ListView",
+        FontColor = "Red", FontStyle = System.Drawing.FontStyle.Strikeout, Priority = 1)]
+    //[Appearance("DisableDelete", Criteria = "Dagui", AppearanceItemType = "Action", TargetItems = "Delete", Visibility = ViewItemVisibility.Hide)]
+
+    public class Phieudexuat : XPObject
+    { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
+        // Use CodeRush to create XPO classes and properties with a few keystrokes.
+        // https://docs.devexpress.com/CodeRushForRoslyn/118557
+        //private bool giaoviec;
+        public Phieudexuat(Session session)
+            : base(session)
+        {
+        }
+        public override void AfterConstruction()
+        {
+            base.AfterConstruction();
+            // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
+            if (Session.IsNewObject(this))
+            {
+                Ngay = TCom.GetServerDateTime();
+                Nhansu ns = TCom.GetCurrentNhanvien();
+                if (ns != null)
+                {
+                    Nhanvien = Session.GetObjectByKey<Nhansu>(ns.Oid);
+                    if (ns.CS != null)
+                        CS = Session.GetObjectByKey<Coso>(ns.CS.Oid);
+                    if (ns.Donvi != null)
+                        Donvi = Session.GetObjectByKey<Bophan>(ns.Donvi.Oid);
+                }
+            }
+            //giaoviec = false;
+        }
+        protected override void OnSaving()
+        {
+            base.OnSaving();
+            if (string.IsNullOrEmpty(TenDexuat))
+            {
+                if (Nhanvien != null && Mau != null)
+                {
+                    TenDexuat = Mau.Tenmau;
+                }
+
+            }
+            //UpdateTrangthai();
+        }
+        //protected override void OnSaved()
+        //{
+        //    base.OnSaved();
+        //    if (giaoviec)
+        //        TCom.SendEmailGiaoviec(this);
+        //}
+        private string _TenDexuat;
+        [XafDisplayName("Đề xuất"), Size(255)]
+        public string TenDexuat
+        {
+            get { return _TenDexuat; }
+            set { SetPropertyValue<string>(nameof(TenDexuat), ref _TenDexuat, value); }
+        }
+
+        private DateTime _Ngay;
+        [XafDisplayName("Ngày"), ModelDefault("AllowEdit", "false")]
+        [ModelDefault("EditMask", "dd/MM/yyyy HH:mm")]
+        [ModelDefault("DisplayFormat", "{0:dd/MM/yyyy HH:mm}")]
+        public DateTime Ngay
+        {
+            get { return _Ngay; }
+            set { SetPropertyValue<DateTime>(nameof(Ngay), ref _Ngay, value); }
+        }
+
+        private Nhansu _Nhanvien;
+        [Association("dexuat")]
+        [XafDisplayName("Người lập"), ModelDefault("AllowEdit", "false")]
+        [RuleRequiredField("Yeucau Nhanvien", DefaultContexts.Save, "Phải có người lập phiếu")]
+
+        public Nhansu Nhanvien
+        {
+            get { return _Nhanvien; }
+            set { SetPropertyValue<Nhansu>(nameof(Nhanvien), ref _Nhanvien, value); }
+        }
+
+        private Nhansu _Chuthe;
+        [Association("chuthe")]
+        [XafDisplayName("Chủ thể")]
+        [Appearance("chuthe", Visibility = ViewItemVisibility.Hide, Criteria = "!ChonChuthe", Context = "DetailView")]
+        public Nhansu Chuthe
+        {
+            get { return _Chuthe; }
+            set { SetPropertyValue<Nhansu>(nameof(Chuthe), ref _Chuthe, value); }
+        }
+
+        private bool _IsCoso = false;
+        [ImmediatePostData, Browsable(false)]
+        public bool IsCoso
+        {
+            get { return _IsCoso; }
+            set { SetPropertyValue<bool>(nameof(IsCoso), ref _IsCoso, value); }
+        }
+
+        private bool _ChonChuthe;
+        [ImmediatePostData, Browsable(false)]
+        public bool ChonChuthe
+        {
+            get { return _ChonChuthe; }
+            set { SetPropertyValue<bool>(nameof(ChonChuthe), ref _ChonChuthe, value); }
+        }
+
+
+        private Bophan _Donvi;
+        [Association]
+        [XafDisplayName("Bộ phận nhận (*)")]
+        [DataSourceCriteria("[Nhan] = true")]
+        [Appearance("bp", Visibility = ViewItemVisibility.Hide, Criteria = "IsCoso", Context = "DetailView")]
+        public Bophan Donvi
+        {
+            get { return _Donvi; }
+            set { SetPropertyValue<Bophan>(nameof(Donvi), ref _Donvi, value); }
+        }
+
+        private Coso _CS;
+        [Association]
+        [XafDisplayName("Cơ sở nhận (*)")]
+        [Appearance("cs", Visibility = ViewItemVisibility.Hide, Criteria = "!IsCoso", Context = "DetailView")]
+        public Coso CS
+        {
+            get { return _CS; }
+            set { SetPropertyValue<Coso>(nameof(CS), ref _CS, value); }
+        }
+
+        private bool _Dagui = false;
+        [XafDisplayName("Đã gửi")]
+        public bool Dagui
+        {
+            get { return _Dagui; }
+            set { SetPropertyValue<bool>(nameof(Dagui), ref _Dagui, value); }
+        }
+
+        private DateTime _Ngayduyet;
+        [XafDisplayName("Ngày duyệt"), ModelDefault("AllowEdit", "false")]
+        [ModelDefault("EditMask", "dd/MM/yyyy HH:mm")]
+        [ModelDefault("DisplayFormat", "{0:dd/MM/yyyy HH:mm}")]
+        public DateTime Ngayduyet
+        {
+            get { return _Ngayduyet; }
+            set { SetPropertyValue<DateTime>(nameof(Ngayduyet), ref _Ngayduyet, value); }
+        }
+
+        private Nhansu _NguoiXuly;
+        [Association("xuly")]
+        [XafDisplayName("Xử lý sau duyệt"), ModelDefault("AllowEdit", "false")]
+        public Nhansu NguoiXuly
+        {
+            get { return _NguoiXuly; }
+            set { SetPropertyValue<Nhansu>(nameof(NguoiXuly), ref _NguoiXuly, value); }
+        }
+
+        private Nhansu _Nguoithuchien;
+        [Association("nv-thuchien")]
+        [XafDisplayName("Người thực hiện")]
+        [DataSourceProperty(nameof(DSNVs))]
+        public Nhansu Nguoithuchien
+        {
+            get { return _Nguoithuchien; }
+            set
+            {
+                //if (_Nguoithuchien != value && value != null && !IsLoading)
+                //    giaoviec = true;
+                SetPropertyValue<Nhansu>(nameof(Nguoithuchien), ref _Nguoithuchien, value);
+            }
+        }
+
+        private string _Yeucau;
+        [XafDisplayName("Yêu cầu thực hiện")]
+        [Size(2048)]
+        public string Yeucau
+        {
+            get { return _Yeucau; }
+            set { SetPropertyValue<string>(nameof(Yeucau), ref _Yeucau, value); }
+        }
+
+        private bool _Daxong;
+        [XafDisplayName("Hoàn thành")]
+        public bool Daxong
+        {
+            get { return _Daxong; }
+            set { SetPropertyValue<bool>(nameof(Daxong), ref _Daxong, value); }
+        }
+
+        private DateTime _Ngayxong;
+        [XafDisplayName("Ngày hoàn thành"), ModelDefault("AllowEdit", "false")]
+        [ModelDefault("EditMask", "dd/MM/yyyy HH:mm")]
+        [ModelDefault("DisplayFormat", "{0:dd/MM/yyyy HH:mm}")]
+        public DateTime Ngayxong
+        {
+            get { return _Ngayxong; }
+            set { SetPropertyValue<DateTime>(nameof(Ngayxong), ref _Ngayxong, value); }
+        }
+
+        private bool _Thuchien = false;
+        [XafDisplayName("Thực hiện"), Browsable(false)]
+        public bool Thuchien
+        {
+            get { return _Thuchien; }
+            set
+            {
+                bool isModified = SetPropertyValue<bool>(nameof(Thuchien), ref _Thuchien, value);
+                if (isModified && !IsLoading && !IsSaving && !IsDeleted)
+                    RefreshMau();
+            }
+        }
+
+        private MauVanban _Mau;
+        [Association]
+        [XafDisplayName("Mẫu đề xuất")]
+        [RuleRequiredField("Yeucau mauphieu", DefaultContexts.Save, "Phải có mẫu đề xuất")]
+        [DataSourceProperty(nameof(DSMau))]
+        [ImmediatePostData]
+
+        public MauVanban Mau
+        {
+            get { return _Mau; }
+            set
+            {
+                bool IsModified = SetPropertyValue<MauVanban>(nameof(Mau), ref _Mau, value);
+                if (IsModified && !IsLoading && !IsSaving && !IsDeleted && value != null)
+                {
+                    IsCoso = value.ApdungCS;
+                    ChonChuthe = Mau.ChonNV;
+                    if (string.IsNullOrEmpty(TenDexuat) && Nhanvien != null && value != null)
+                    {
+                        TenDexuat = Mau.Kyhieu + "-";
+                    }
+                }
+            }
+        }
+
+        private XPCollection<MauVanban> ListMau;
+        public XPCollection<MauVanban> DSMau
+        {
+            get
+            {
+                if (ListMau == null)
+                {
+                    ListMau = new XPCollection<MauVanban>(Session);
+                    RefreshMau();
+                }
+                return ListMau;
+            }
+        }
+
+        private void RefreshMau()
+        {
+            ListMau = new XPCollection<MauVanban>(Session)
+            {
+                Criteria = CriteriaOperator.Parse("Oid=?", 0)
+            };
+            if (Thuchien)
+            {
+                Nhansu nv = TCom.GetCurrentNhanvien();
+                if (nv != null && nv.Donvi != null)
+                {
+                    XPCollection<MauVanban> Mauchon = new(Session)
+                    {
+                        Criteria = CriteriaOperator.Parse("Thuchien=? && Huy=?", true, false)
+                    };
+                    foreach (MauVanban p in Mauchon)
+                    {
+                        ListMau.Add(p);
+                    }
+                }
+            }
+            else
+            {
+                Nhansu nv = TCom.GetCurrentNhanvien();
+                if (nv != null && nv.Donvi != null)
+                {
+                    XPCollection<MauBP> Mauchon = new(Session)
+                    {
+                        Criteria = CriteriaOperator.Parse("Donvi=? && Mau.Huy=?", Session.GetObjectByKey<Bophan>(nv.Donvi.Oid), false)
+                    };
+                    foreach (MauBP p in Mauchon)
+                    {
+                        ListMau.Add(p.Mau);
+                    }
+                }
+            }
+
+        }
+
+        private string _Noidung;
+        [XafDisplayName("Nội dung")]
+        [Size(SizeAttribute.Unlimited)]
+        [EditorAlias(EditorAliases.RichTextPropertyEditor)]
+        public string Noidung
+        {
+            get { return _Noidung; }
+            set { SetPropertyValue<string>(nameof(Noidung), ref _Noidung, value); }
+        }
+
+        private string _NoidungGoc;
+        [XafDisplayName("Nội dung gốc")]
+        [Size(SizeAttribute.Unlimited)]
+        [EditorAlias(EditorAliases.RichTextPropertyEditor)]
+        [Browsable(false)]
+        public string NoidungGoc
+        {
+            get { return _NoidungGoc; }
+            set { SetPropertyValue<string>(nameof(NoidungGoc), ref _NoidungGoc, value); }
+        }
+
+        private string _Kyduyet;
+        [XafDisplayName("Ký duyệt")]
+        [Size(SizeAttribute.Unlimited)]
+        [EditorAlias(EditorAliases.RichTextPropertyEditor)]
+        public string Kyduyet
+        {
+            get { return _Kyduyet; }
+            set { SetPropertyValue<string>(nameof(Kyduyet), ref _Kyduyet, value); }
+        }
+
+        [DevExpress.Xpo.Aggregated, Association]
+        [XafDisplayName("Quá trình duyệt")]
+        //[RuleRequiredField(DefaultContexts.Delete, InvertResult = true, CustomMessageTemplate = "'{TargetPropertyName}' có dữ liệu. Không xóa được!")]
+        public XPCollection<DuyetDexuat> DuyetDexuats
+        {
+            get { return GetCollection<DuyetDexuat>(nameof(DuyetDexuats)); }
+        }
+
+        [DevExpress.Xpo.Aggregated, Association]
+        [XafDisplayName("Tệp kèm theo")]
+        //[RuleRequiredField(DefaultContexts.Delete, InvertResult = true, CustomMessageTemplate = "'{TargetPropertyName}' có dữ liệu. Không xóa được!")]
+        public XPCollection<PhieudexuatFile> PhieudexuatFiles
+        {
+            get { return GetCollection<PhieudexuatFile>(nameof(PhieudexuatFiles)); }
+        }
+
+        [DevExpress.Xpo.Aggregated, Association]
+        [XafDisplayName("Ý kiến")]
+        //[RuleRequiredField(DefaultContexts.Delete, InvertResult = true, CustomMessageTemplate = "'{TargetPropertyName}' có dữ liệu. Không xóa được!")]
+        public XPCollection<Quatrinh> Chinhsuas
+        {
+            get { return GetCollection<Quatrinh>(nameof(Chinhsuas)); }
+        }
+
+        [DevExpress.Xpo.Aggregated, Association]
+        [XafDisplayName("Chia sẻ")]
+        public XPCollection<Chiase> Chiases
+        {
+            get { return GetCollection<Chiase>(nameof(Chiases)); }
+        }
+
+        private TCom.EStatusVB _Trangthai;
+        [XafDisplayName("Trạng thái"), ModelDefault("AllowEdit", "false")]
+        public TCom.EStatusVB Trangthai
+        {
+            get { return _Trangthai; }
+            set { SetPropertyValue<TCom.EStatusVB>(nameof(Trangthai), ref _Trangthai, value); }
+        }
+
+        private int _TyleDuyet;
+        //[Browsable(false)]
+        [EditorAlias("ProgressProperty")]
+        [XafDisplayName("Tiến trình")]
+        [ModelDefault("DisplayFormat", "")]
+        public int TyleDuyet
+        {
+            get { return _TyleDuyet; }
+            set { SetPropertyValue<int>(nameof(TyleDuyet), ref _TyleDuyet, value); }
+        }
+
+        [XafDisplayName("Thực hiện")]
+        public bool Phieuthuchien
+        {
+            get
+            {
+                if (LinkID != 0)
+                    return true;
+                else
+                    return false;
+            }
+        }
+
+        private TCom.EStatusXL _TrangthaiXL;
+        [XafDisplayName("Xử lý")]
+        public TCom.EStatusXL TrangthaiXL
+        {
+            get { return _TrangthaiXL; }
+            set 
+            { 
+                bool isModified = SetPropertyValue<TCom.EStatusXL>(nameof(TrangthaiXL), ref _TrangthaiXL, value); 
+                if(isModified && !IsLoading)
+                {
+                    if (value == TCom.EStatusXL.xlxong)
+                    {
+                        Daxong = true;
+                        Ngayxong = TCom.GetServerDateTime();
+                    }
+                    else
+                    {
+                        Daxong = false;
+                        Ngayxong = DateTime.MinValue;
+                    }
+                }
+            }
+        }
+
+        private int _LinkID;
+        [Browsable(false)]
+        public int LinkID
+        {
+            get { return _LinkID; }
+            set { SetPropertyValue<int>(nameof(LinkID), ref _LinkID, value); }
+        }
+
+        private XPCollection<Nhansu> NhanvienPhong;
+        public XPCollection<Nhansu> DSNVs
+        {
+            get
+            {
+                if (NhanvienPhong == null)
+                {
+                    NhanvienPhong = new XPCollection<Nhansu>(Session);
+                    RefreshNVs();
+                }
+                return NhanvienPhong;
+            }
+        }
+
+        private void RefreshNVs()
+        {
+            NhanvienPhong = new XPCollection<Nhansu>(Session)
+            {
+                Criteria = CriteriaOperator.Parse("Oid=?", 0)
+            };
+            if (NguoiXuly != null && NguoiXuly.Donvi != null)
+            {
+                XPCollection<Nhansu> dss = new(Session)
+                {
+                    Criteria = CriteriaOperator.Parse("Donvi=?", NguoiXuly.Donvi)
+                };
+                foreach (Nhansu p in dss)
+                {
+                    NhanvienPhong.Add(p);
+                }
+                //Bo phan thuc hien
+                XPCollection<Bophan> listbp = new(Session)
+                {
+                    Criteria = CriteriaOperator.Parse("Thuchien=?", true)
+                };
+                foreach (Bophan b in listbp)
+                {
+                    foreach (Nhansu nv in b.Nhansus)
+                    {
+                        NhanvienPhong.Add(nv);
+                    }
+                }
+            }
+        }
+
+        [XafDisplayName("Thông tin phiếu"), VisibleInListView(false)]
+        public string ThongtinPhieu
+        {
+            get
+            {
+                string tt = "Số: " + Oid.ToString();
+                if (Ngay != DateTime.MinValue)
+                    tt += ", Ngày: " + Ngay.ToString("dd/MM/yyyy HH:mm");
+                if (Nhanvien != null)
+                    tt += ", Người lập: " + Nhanvien.HoTen;
+                if (Nhanvien.Donvi != null)
+                    tt += ", Bộ phận: " + Nhanvien.Donvi.Name;
+                if (Nhanvien.CS != null)
+                    tt += ", Cơ sở: " + Nhanvien.CS.TenCoso;
+                return tt;
+            }
+        }
+
+    }
+}

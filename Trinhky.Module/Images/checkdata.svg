@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+  <g id="main">
+    <g id="icon">
+      <path d="M0.5,27.5L15.5,27.5L15.5,15.5L29.5,15.5L29.5,6.5L0.5,6.5zz" fill="#FFFFFF"/>
+      <path d="M0,6.5L0,27.5L0,28L0.5,28L15.5,28L15.5,27L1,27L1,7L29,7L29,15.5L30,15.5L30,6.5L30,6L29.5,6L0.5,6L0,6zz" fill="#383838"/>
+      <path d="M0.5,6.5L16.5,6.5L12.53,2.5L0.5,2.5zz" fill="#92CBEE"/>
+      <path d="M0,2.5L0,6.5L0,7L0.5,7L16.5,7L16.86,6.148L12.89,2.148L12.74,2L12.53,2L0.5,2L0,2zM12.32,3L15.3,6L1,6L1,3zz" fill="#0964B0"/>
+      <path d="M14.5,7L30,7L30,6L14.5,6zz" fill="#0964B0"/>
+      <path d="M3,10L10,10L10,9L3,9zM12,10L18,10L18,9L12,9zM20,10L27,10L27,9L20,9zM3,13L10,13L10,12L3,12zM12,13L18,13L18,12L12,12zM20,13L27,13L27,12L20,12zM3,16L10,16L10,15L3,15zM12,16L15.5,16L15.5,15.5L18,15.5L18,15L12,15zM20,15.5L27,15.5L27,15L20,15zM3,19L10,19L10,18L3,18zM12,19L15.5,19L15.5,18L12,18zM3,22L10,22L10,21L3,21zM12,22L15.5,22L15.5,21L12,21zM3,25L10,25L10,24L3,24zM12,25L15.5,25L15.5,24L12,24zz" fill="#787979"/>
+    </g>
+    <g id="overlay">
+      <rect x="17.5" y="17.5" width="14" height="14" fill="#FFFFFF" stroke="#383838" stroke-width="1" stroke-miterlimit="10"/>
+      <polyline points="19.73,23.858 23.32,27.501 29.374,21.447" fill="none" stroke="#228BCB" stroke-width="1.2" stroke-miterlimit="10" stroke-linejoin="miter"/>
+    </g>
+  </g>
+</svg>

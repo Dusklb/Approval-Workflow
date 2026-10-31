@@ -1,0 +1,170 @@
+﻿@using DevExpress.ExpressApp;
+@using DevExpress.ExpressApp.Xpo;
+@using DevExpress.Xpo;
+@using DevExpress.Xpo.DB;
+@using DevExpress.Data.Filtering;
+@using DevExpress.Blazor.Office;
+@using DevExpress.Blazor.RichEdit
+@using Trinhky.Module
+@using Trinhky.Module.BusinessObjects
+@using DevExpress.Persistent.BaseImpl;
+
+@inject DevExpress.ExpressApp.Core.IObjectSpaceFactory objectSpaceFactory
+@inject IJSRuntime jsRuntime
+
+<style>
+    .my-textstyle {
+        border: none;
+        font-size:larger;
+        font-weight:900;
+    }
+</style>
+<style>
+    .my-style {
+        color: blue;
+        font-weight: bold;
+    }
+
+    .tieude {
+        font-weight: bold;
+    }
+
+    .nhieudong {
+        white-space:pre-wrap;
+    }
+</style>
+<div class="row">
+    <div class="d-flex flex-row flex-wrap">
+        <div class="me-2 mb-2">
+                <h2>Tài liệu hướng dẫn</h2>
+        </div>
+    </div>
+</div>
+
+<br>
+@if (ListMuc != null)
+{
+    for (int i = 0; i < ListMuc.Length; i++)
+    {
+        <div class="row">
+            <div class="card-header bg-transparent text-body py-2 border-bottom-0 fw-bold">@ListMuc[i].Tenmuc</div>
+            <DxGrid Data="@GetTailieuHDs(ListMuc[i].Id)"
+                    PageSize="20"
+                    ColumnResizeMode="GridColumnResizeMode.NextColumn"
+                    SelectionMode="GridSelectionMode.Single">
+                <Columns>
+                    <DxGridDataColumn Caption="Tên tài liệu" FieldName="Tentailieu" Width="60%">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Tên tài liệu</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    <DxGridDataColumn Caption="Tệp" FieldName="Tep">
+                        <HeaderCaptionTemplate>
+                            <span class="tieude">Tệp</span>
+                        </HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                    <DxGridDataColumn FieldName="Id" AllowSort="false" Width="45px" MinWidth="100" TextAlignment="GridTextAlignment.Center">
+                        <CellDisplayTemplate><button class="btn btn-link grid-btn-link" @onclick="() => ShowDetails((int)context.Value)">Xem</button></CellDisplayTemplate>
+                        <HeaderCaptionTemplate><span title="Thông tin đầy đủ">Chi tiết</span></HeaderCaptionTemplate>
+                    </DxGridDataColumn>
+                </Columns>
+            </DxGrid>
+        </div>
+        <br>
+    }
+}
+
+@code {
+    string tendx{ get; set; }
+    string thongtin { get; set; }
+    byte[] documentContent;
+
+    private MucHD[] ListMuc;
+    private TailieuHD[] ListTL;
+    //IGridCommandColumn CommandColumnTailieu { get; set; }
+
+    protected override void OnInitialized()
+    {
+        LoadDulieu();
+    }
+    private TailieuHD[] GetTailieuHDs(int id)
+    {
+        List<TailieuHD> availableCars = new List<TailieuHD>();
+
+        foreach (TailieuHD c in ListTL)
+        {
+            if (c.Idmuc==id)
+                availableCars.Add(c);
+        }
+
+        return availableCars.ToArray();
+    }
+    private void LoadDulieu()
+    {
+        try
+        {
+            List<MucHD> objectsHD = new();
+            List<TailieuHD> objects = new();
+
+            IObjectSpace objectSpace = objectSpaceFactory.CreateObjectSpace(typeof(Huongdan));
+            Session session = ((XPObjectSpace)objectSpace).Session;
+            XPCollection<Huongdan> collection = new XPCollection<Huongdan>(session);
+            collection.Sorting = new SortingCollection(new SortProperty("SoTT", SortingDirection.Ascending));
+            foreach (Huongdan row in collection)
+            {
+                MucHD objMuc = new()
+                {
+                    Id=row.Oid,
+                    Tenmuc=row.Muc
+                };
+                objectsHD.Add(objMuc);
+
+                XPCollection<HuongdanTep> Teps = new XPCollection<HuongdanTep>(session);
+                Teps.Criteria = CriteriaOperator.Parse("Help=?", row);
+                foreach(HuongdanTep item in Teps)
+                {
+                    TailieuHD obj = new()
+                        {
+                            Id = item.Oid,
+                            Idmuc = item.Help.Oid,
+                            Tentailieu = item.Tailieu,
+                            Tep= item.Tep.FileName
+                        };
+                    objects.Add(obj);
+                }
+            }
+
+            ListMuc = objectsHD.ToArray<MucHD>();
+            ListTL = objects.ToArray<TailieuHD>();
+        }
+        catch (Exception ex)
+        {
+            TCom.CustomError(ex.Message);
+        }
+    }
+    public void ShowDetails(int IdTep)
+    {
+        IObjectSpace objectSpace = objectSpaceFactory.CreateObjectSpace(typeof(Huongdan));
+        HuongdanTep huongdanTep = objectSpace.FindObject<HuongdanTep>(CriteriaOperator.Parse("Oid=?", IdTep));
+        if (huongdanTep != null)
+        {
+            if (huongdanTep.Tep.FileName.Contains(".pdf"))
+            {
+                byte[] byteArray;
+                using (var stream = new MemoryStream())
+                {
+                    huongdanTep.Tep.SaveToStream(stream);
+                    byteArray = stream.ToArray();
+                }
+                System.Threading.Tasks.Task.Run(async () => await jsRuntime.InvokeAsync<object>("openPDF", byteArray));
+            }
+            else
+                TCom.CustomError("Chỉ xem được tệp pdf");
+        }
+    }
+    void HandlerBack()
+    {
+        System.Threading.Tasks.Task.Run(async () => await jsRuntime.InvokeAsync<object>("navigateBack"));
+
+    }
+}

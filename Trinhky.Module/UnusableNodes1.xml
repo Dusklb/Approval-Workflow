@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="MauVanban_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="MauVanban">
+              <LayoutItem Id="Chucvuxuly" Index="1" RelativeSize="4.722222222222222" Removed="True" />
+              <LayoutItem Id="ApdungCS" Removed="True" />
+              <LayoutItem Id="Loai" RelativeSize="31.372549019607842" Removed="True" />
+              <LayoutItem Id="Tenmau" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

@@ -1,0 +1,254 @@
+﻿@using DevExpress.ExpressApp;
+@using Trinhky.Module.BusinessObjects;
+@using Trinhky.Blazor.Server.Editors;
+@using DevExpress.Xpo;
+@using DevExpress.Data.Filtering;
+@using Trinhky.Blazor.Server.Controllers;
+
+@inject DevExpress.ExpressApp.Core.IObjectSpaceFactory objectSpaceFactory
+@inject NavigationManager NavigationManager
+@inject FileUrlStorageService _fileUrlStorageService
+@inject IJSRuntime jsRuntime
+
+<style>
+    .my-textstyle {
+        border: none;
+        font-size: larger;
+        font-weight: 900;
+    }
+
+    .my-btnstyle {
+        font-size: larger;
+        font-weight: 600;
+    }
+</style>
+
+<div class="row">
+    <div class="buttons-group mb-2">
+        <div class="d-flex flex-row flex-wrap">
+            <div class="me-2 mb-2">
+                <DxButton RenderStyle="ButtonRenderStyle.Primary" IconCssClass="btn-icon-save" RenderStyleMode="ButtonRenderStyleMode.Outline"
+                          CssClass="w-100 my-btnstyle" Text="Ghi" Title="Lưu dữ liệu đính kèm" Click="@HandlerSave" />
+            </div>
+            <div class="me-2 mb-2">
+                <DxButton RenderStyle="ButtonRenderStyle.Primary" IconCssClass="btn-icon-back" RenderStyleMode="ButtonRenderStyleMode.Outline"
+                          CssClass="w-100 my-btnstyle" Text="Quay lại" Title="Trở lại trang trước" Click="@HandlerUndo" />
+            </div>
+        </div>
+    </div>
+</div>
+<DxTextBox @bind-Text="@tendx" CssClass="my-textstyle"></DxTextBox>
+<DxTextBox @bind-Text="@thongtin" ReadOnly=true></DxTextBox>
+<div class="row">
+    <DxGrid Data="@ListTep" ShowFilterRow=false KeyFieldName="ID" PagerVisible="true"
+            PageSize="20"
+            ColumnResizeMode="GridColumnResizeMode.NextColumn"
+            EditModelSaving="OnEditModelSaving" EditCanceling="OnEditCanceling" DataItemDeleting="OnDataItemDeleting">
+        <Columns>
+            <DxGridCommandColumn Width="150px" />
+            <DxGridDataColumn FieldName=@nameof(TepDinhkem.Name) Caption="Tên tài liệu"/>
+            <DxGridDataColumn FieldName=@nameof(TepDinhkem.TepName) Caption="Tên tệp" />
+            <DxGridDataColumn FieldName=@nameof(TepDinhkem.TepUrl) Visible=false/>
+        </Columns>
+        <EditFormTemplate Context="EditFormContext">
+            @{
+                var item = (TepDinhkem)EditFormContext.EditModel;
+            }
+            <DxFormLayout >
+                <DxFormLayoutItem Caption="Tên tài liệu:">
+                    @EditFormContext.GetEditor("Name")
+                </DxFormLayoutItem>
+                <DxFormLayoutItem>
+                </DxFormLayoutItem>
+                <DxFormLayoutItem>
+                    <DxUpload Name="ImageUpload" FileUploaded="@((args) => OnFileUploaded(args, item))"
+                        UploadUrl="@GetUploadUrl("/api/Upload/UploadFile/")"
+                        ChunkSize="20000"
+                              FileUploadError="@OnUploadError"
+                              FileUploadStart="@OnFileUploadStart"
+                              ShowFileList="false" SelectButtonText="Chọn tệp">
+                    </DxUpload>
+                </DxFormLayoutItem>
+            </DxFormLayout>
+        </EditFormTemplate>
+    </DxGrid>
+</div>
+
+@code {
+    string tendx { get; set; }
+    string thongtin { get; set; }
+    private List<TepDinhkem> ListTep;
+    private int phieuid;
+    private Nhansu ns;
+    //object? Data { get; set; }
+    string MyError { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        //List<TepDinhkem> objects = new();
+        ListTep = new();
+        for (int i = 1; i < 2; i++)
+        {
+            TepDinhkem obj = new()
+                {
+                    ID = i,
+                    Name = "",
+                    TepName = "",
+                };
+
+            ListTep.Add(obj);
+        }
+        //ListTep = objects.ToArray<TepDinhkem>();
+
+        ns = TCom.GetCurrentNhanvien();
+        phieuid = TCom.GetUserIntValue("viewdx");
+        if (phieuid > 0)
+        {
+            IObjectSpace objectSpace = objectSpaceFactory.CreateObjectSpace(typeof(Phieudexuat));
+            Phieudexuat phieudexuat = objectSpace.FindObject<Phieudexuat>(CriteriaOperator.Parse("Oid=?", phieuid));
+            if (phieudexuat != null)
+            {
+                tendx = phieudexuat.TenDexuat;
+                thongtin = "Số: " + phieudexuat.Oid.ToString() + ", ngày: " + phieudexuat.Ngay.ToString("dd/MM/yyyy HH:mm") + ", Người lập: " + phieudexuat.Nhanvien.HoTen;
+            }
+        }
+    }
+    //protected override async Task OnInitializedAsync()
+    //{
+
+    //    //Data = await _testModelService.GetDataSourceAsync();
+    //}
+    protected string GetUploadUrl(string url)
+    {
+        return NavigationManager.ToAbsoluteUri(url).AbsoluteUri;
+    }
+    void OnFileUploadStart(FileUploadStartEventArgs e)
+    {
+        if (ns != null)
+        {
+            e.RequestData.Add("sothe", ns.Sothe);
+        }
+    }
+    protected void OnFileUploaded(FileUploadEventArgs args, TepDinhkem item)
+    {
+        item.TepName = args.FileInfo.Name;
+        var fileUrl = _fileUrlStorageService.Get(Guid.Parse(args.FileInfo.Guid));
+        item.TepUrl= fileUrl;
+    }
+    void OnEditModelSaving(GridEditModelSavingEventArgs e)
+    {
+        var itemModel = (TepDinhkem)e.EditModel;
+        if (e.IsNew)
+        {
+            TepDinhkem obj = new()
+                {
+                    ID = ListTep.Count + 1,
+                    Name = itemModel.Name,
+                    TepName = itemModel.TepName,
+                    TepUrl = itemModel.TepUrl
+                };
+            ListTep.Add(obj);
+            InvokeAsync(() => StateHasChanged());
+        }
+        else
+        {
+            for(int i = 0; i < ListTep.Count; i++)
+            {
+                if (ListTep[i].ID == itemModel.ID)
+                {
+                    ListTep[i].Name = itemModel.Name;
+                    ListTep[i].TepName = itemModel.TepName;
+                    ListTep[i].TepUrl = itemModel.TepUrl;
+                    break;
+                }
+            }
+            TepDinhkem obj = new()
+            {
+                ID = ListTep.Count+1,
+                Name = "",
+                TepName = "",
+                TepUrl = ""
+            };
+            ListTep.Add(obj);
+            InvokeAsync(() => StateHasChanged());
+        }
+    }
+    void OnEditCanceling(GridEditCancelingEventArgs e)
+    {
+        //xoa tep da uploaded
+        if (e.IsNew)
+        {
+            e.Cancel = true;
+        }
+    }
+    void OnDataItemDeleting(GridDataItemDeletingEventArgs e)
+    {
+        var itemModel = (TepDinhkem)e.DataItem;
+        string tepPath = Path.Combine(BCom.webRootPath, itemModel.TepUrl);
+        if (System.IO.File.Exists(tepPath))
+            System.IO.File.Delete(tepPath);
+        ListTep.Remove((TepDinhkem)e.DataItem);
+        InvokeAsync(() => StateHasChanged());
+        //await _testModelService.Remove((TepDinhkem)e.DataItem);
+    }
+    void OnUploadError(FileUploadErrorEventArgs e)
+    {
+        MyError = e.RequestInfo.ResponseText;
+        TCom.CustomError(MyError);
+    }
+    async Task HandlerSave(MouseEventArgs args)
+    {
+        foreach (TepDinhkem tep in ListTep)
+        {
+            if (!string.IsNullOrEmpty(tep.TepName) && string.IsNullOrEmpty(tep.Name))
+            {
+                TCom.CustomError("Dòng " + tep.TepName +" chưa có tên tài liệu!");
+                return;
+            }
+        }
+
+        if (phieuid > 0 && ListTep.Count>0)
+        {
+            string tentl = "";
+            IObjectSpace objectSpace = objectSpaceFactory.CreateObjectSpace(typeof(PhieudexuatFile));
+            Phieudexuat CurPhieu = objectSpace.FindObject<Phieudexuat>(CriteriaOperator.Parse("Oid=?", phieuid));
+            if (CurPhieu != null)
+            {
+                foreach(TepDinhkem tep in ListTep)
+                {
+                    if (!string.IsNullOrEmpty(tep.TepName) && !string.IsNullOrEmpty(tep.Name))
+                    {
+                        PhieudexuatFile phieudexuatFile = objectSpace.FindObject<PhieudexuatFile>(CriteriaOperator.Parse("Phieu=? && TepTen=?", CurPhieu, tep.TepName));
+                        if (phieudexuatFile == null)
+                        {
+                            phieudexuatFile = objectSpace.CreateObject<PhieudexuatFile>();
+                            phieudexuatFile.Nhanvien = objectSpace.GetObject(ns);
+                            phieudexuatFile.Phieu = CurPhieu;
+                            phieudexuatFile.Tailieu = tep.Name;
+                            phieudexuatFile.TepTen = tep.TepName;
+                            phieudexuatFile.TepUrl = tep.TepUrl;
+                            phieudexuatFile.Loai = 0;
+                            phieudexuatFile.Save();
+
+                            tentl += tep.Name + ", ";
+                        }
+                    }
+                }
+                objectSpace.CommitChanges();
+                if (tentl.Length>2)
+                {
+                    tentl = tmLib.CommonLib.Left(tentl, tentl.Length - 2);
+                    TCom.SendEmailTailieu(CurPhieu, tentl);
+                }
+                TCom.CustomInfo("Đã hoàn thành tác vụ");
+            }
+        }
+
+        await jsRuntime.InvokeAsync<object>("navigateBack");
+    }
+    async Task HandlerUndo(MouseEventArgs args)
+    {
+        await jsRuntime.InvokeAsync<object>("navigateBack");
+    }
+}

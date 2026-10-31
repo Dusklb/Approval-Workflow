@@ -1,0 +1,189 @@
+17.06.23 10:14:13.208	================================================================================
+17.06.23 10:14:13.222	Trace Log for Trinhky.Win is started
+17.06.23 10:14:13.223	================================================================================
+17.06.23 10:14:13.227	System Environment
+	OS Version: Microsoft Windows NT 10.0.22000.0
+	CLR Version: 6.0.18
+	eXpressApp Version: 23.1.3.0
+	eXpressApp File Version: 23.1.3.0
+
+Application config
+	Modules=
+	NewVersionServer=
+	EnableDiagnosticActions=False
+	EnableRoleGeneratorAction=True
+	eXpressAppFrameworkTraceLevel=3
+
+17.06.23 10:14:17.584	Initialize application
+=======================
+17.06.23 10:14:17.589		Command line arguments: 
+		D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\Trinhky.Win.dll
+17.06.23 10:14:19.811	The ValueManagerType is initialized by the default value: SimpleValueManager.
+17.06.23 10:14:19.852	Stack trace:
+   at DevExpress.Persistent.Base.ValueManager.CreateValueManager[ValueType](String key)
+   at DevExpress.Persistent.Base.ValueManager.<>c__4`1.<GetValueManager>b__4_1(String _key)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at DevExpress.Persistent.Base.ValueManager.GetValueManager[ValueType](String key)
+   at DevExpress.ExpressApp.ReportsV2.ApplicationReportObjectSpaceProvider.set_ContextApplication(XafApplication value)
+   at DevExpress.ExpressApp.ReportsV2.Win.ReportsWindowsFormsModuleV2.Setup(XafApplication application)
+   at DevExpress.ExpressApp.XafApplication.ModuleList_ModuleAdded(Object sender, ModuleRegisteredEventArgs e)
+   at DevExpress.ExpressApp.ModuleList.OnInsert(Int32 index, Object value)
+   at System.Collections.CollectionBase.System.Collections.IList.Add(Object value)
+   at DevExpress.ExpressApp.Win.ApplicationBuilder.WinModuleBuilder.<>c__DisplayClass4_0`1.<Add>b__0(XafApplication application)
+   at DevExpress.ExpressApp.Win.ApplicationBuilder.WinApplicationBuilder.Build()
+   at Trinhky.Win.ApplicationBuilder.BuildApplication(String connectionString) in D:\Dev23\Trinhky\Trinhky.Win\Startup.cs:line 59
+   at Trinhky.Win.Program.Main(String[] args) in D:\Dev23\Trinhky\Trinhky.Win\Program.cs:line 74
+
+17.06.23 10:14:21.821	--------------------------------------------------------------------------------
+							Initialize Modules Manager
+
+17.06.23 10:14:21.825	--------------------------------------------------------------------------------
+							
+
+17.06.23 10:14:21.863	--------------------------------------------------------------------------------
+Loaded assemblies
+	Accessibility, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.WindowsDesktop.App\6.0.18\Accessibility.dll
+	Anonymously Hosted DynamicMethods Assembly, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null, Location=InMemory Module
+	DevExpress.BonusSkins.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.BonusSkins.v23.1.dll
+	DevExpress.Data.Desktop.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.Data.Desktop.v23.1.dll
+	DevExpress.Data.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.Data.v23.1.dll
+	DevExpress.Drawing.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.Drawing.v23.1.dll
+	DevExpress.ExpressApp.Chart.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.Chart.v23.1.dll
+	DevExpress.ExpressApp.Chart.Win.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.Chart.Win.v23.1.dll
+	DevExpress.ExpressApp.CloneObject.Xpo.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.CloneObject.Xpo.v23.1.dll
+	DevExpress.ExpressApp.ConditionalAppearance.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.ConditionalAppearance.v23.1.dll
+	DevExpress.ExpressApp.Dashboards.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.Dashboards.v23.1.dll
+	DevExpress.ExpressApp.Dashboards.Win.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.Dashboards.Win.v23.1.dll
+	DevExpress.ExpressApp.FileAttachment.Win.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.FileAttachment.Win.v23.1.dll
+	DevExpress.ExpressApp.Notifications.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.Notifications.v23.1.dll
+	DevExpress.ExpressApp.Notifications.Win.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.Notifications.Win.v23.1.dll
+	DevExpress.ExpressApp.Objects.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.Objects.v23.1.dll
+	DevExpress.ExpressApp.Office.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.Office.v23.1.dll
+	DevExpress.ExpressApp.Office.Win.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.Office.Win.v23.1.dll
+	DevExpress.ExpressApp.ReportsV2.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.ReportsV2.v23.1.dll
+	DevExpress.ExpressApp.ReportsV2.Win.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.ReportsV2.Win.v23.1.dll
+	DevExpress.ExpressApp.Security.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.Security.v23.1.dll
+	DevExpress.ExpressApp.Security.Xpo.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.Security.Xpo.v23.1.dll
+	DevExpress.ExpressApp.TreeListEditors.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.TreeListEditors.v23.1.dll
+	DevExpress.ExpressApp.TreeListEditors.Win.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.TreeListEditors.Win.v23.1.dll
+	DevExpress.ExpressApp.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.v23.1.dll
+	DevExpress.ExpressApp.Validation.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.Validation.v23.1.dll
+	DevExpress.ExpressApp.Validation.Win.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.Validation.Win.v23.1.dll
+	DevExpress.ExpressApp.ViewVariantsModule.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.ViewVariantsModule.v23.1.dll
+	DevExpress.ExpressApp.Win.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.Win.v23.1.dll
+	DevExpress.ExpressApp.Xpo.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.ExpressApp.Xpo.v23.1.dll
+	DevExpress.Persistent.Base.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.Persistent.Base.v23.1.dll
+	DevExpress.Persistent.BaseImpl.Xpo.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.Persistent.BaseImpl.Xpo.v23.1.dll
+	DevExpress.Printing.v23.1.Core, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.Printing.v23.1.Core.dll
+	DevExpress.RichEdit.v23.1.Core, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.RichEdit.v23.1.Core.dll
+	DevExpress.Spreadsheet.v23.1.Core, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.Spreadsheet.v23.1.Core.dll
+	DevExpress.Utils.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.Utils.v23.1.dll
+	DevExpress.Xpo.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.Xpo.v23.1.dll
+	DevExpress.XtraBars.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.XtraBars.v23.1.dll
+	DevExpress.XtraEditors.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.XtraEditors.v23.1.dll
+	DevExpress.XtraReports.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.XtraReports.v23.1.dll
+	DevExpress.XtraReports.v23.1.Extensions, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.XtraReports.v23.1.Extensions.dll
+	DevExpress.XtraRichEdit.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.XtraRichEdit.v23.1.dll
+	DevExpress.XtraSpreadsheet.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.XtraSpreadsheet.v23.1.dll
+	DevExpress.XtraTreeList.v23.1, Version=23.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\DevExpress.XtraTreeList.v23.1.dll
+	Microsoft.Extensions.Configuration, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\Microsoft.Extensions.Configuration.dll
+	Microsoft.Extensions.Configuration.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+	Microsoft.Extensions.DependencyInjection, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\Microsoft.Extensions.DependencyInjection.dll
+	Microsoft.Extensions.DependencyInjection.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+	Microsoft.Extensions.Options, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\Microsoft.Extensions.Options.dll
+	Microsoft.Extensions.Primitives, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\Microsoft.Extensions.Primitives.dll
+	Microsoft.Win32.Primitives, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\Microsoft.Win32.Primitives.dll
+	Microsoft.Win32.Registry, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\Microsoft.Win32.Registry.dll
+	Microsoft.Win32.SystemEvents, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.WindowsDesktop.App\6.0.18\Microsoft.Win32.SystemEvents.dll
+	mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\mscorlib.dll
+	netstandard, Version=2.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\netstandard.dll
+	System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.dll
+	System.Collections, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Collections.dll
+	System.Collections.Concurrent, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Collections.Concurrent.dll
+	System.Collections.Immutable, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Collections.Immutable.dll
+	System.Collections.NonGeneric, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Collections.NonGeneric.dll
+	System.Collections.Specialized, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Collections.Specialized.dll
+	System.ComponentModel, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.ComponentModel.dll
+	System.ComponentModel.EventBasedAsync, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.ComponentModel.EventBasedAsync.dll
+	System.ComponentModel.Primitives, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.ComponentModel.Primitives.dll
+	System.ComponentModel.TypeConverter, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.ComponentModel.TypeConverter.dll
+	System.Configuration.ConfigurationManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.WindowsDesktop.App\6.0.18\System.Configuration.ConfigurationManager.dll
+	System.Console, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Console.dll
+	System.Data.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Data.Common.dll
+	System.Diagnostics.FileVersionInfo, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Diagnostics.FileVersionInfo.dll
+	System.Diagnostics.Process, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Diagnostics.Process.dll
+	System.Diagnostics.StackTrace, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Diagnostics.StackTrace.dll
+	System.Diagnostics.TextWriterTraceListener, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Diagnostics.TextWriterTraceListener.dll
+	System.Diagnostics.TraceSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Diagnostics.TraceSource.dll
+	System.Diagnostics.Tracing, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Diagnostics.Tracing.dll
+	System.Drawing, Version=6.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.WindowsDesktop.App\6.0.18\System.Drawing.dll
+	System.Drawing.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.WindowsDesktop.App\6.0.18\System.Drawing.Common.dll
+	System.Drawing.Primitives, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Drawing.Primitives.dll
+	System.IO.Compression, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.IO.Compression.dll
+	System.Linq, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Linq.dll
+	System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Linq.Expressions.dll
+	System.Memory, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Memory.dll
+	System.Net.WebClient, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Net.WebClient.dll
+	System.Numerics.Vectors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Numerics.Vectors.dll
+	System.ObjectModel, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.ObjectModel.dll
+	System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Private.CoreLib.dll
+	System.Private.Uri, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Private.Uri.dll
+	System.Private.Xml, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Private.Xml.dll
+	System.Reflection.Emit, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Reflection.Emit.dll
+	System.Reflection.Emit.ILGeneration, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Reflection.Emit.ILGeneration.dll
+	System.Reflection.Emit.Lightweight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Reflection.Emit.Lightweight.dll
+	System.Reflection.Metadata, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Reflection.Metadata.dll
+	System.Reflection.Primitives, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Reflection.Primitives.dll
+	System.Resources.Extensions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.WindowsDesktop.App\6.0.18\System.Resources.Extensions.dll
+	System.Runtime, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Runtime.dll
+	System.Runtime.InteropServices, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Runtime.InteropServices.dll
+	System.Runtime.InteropServices.RuntimeInformation, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Runtime.InteropServices.RuntimeInformation.dll
+	System.Runtime.Serialization.Formatters, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Runtime.Serialization.Formatters.dll
+	System.Security.Claims, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Security.Claims.dll
+	System.Security.Cryptography.Algorithms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Security.Cryptography.Algorithms.dll
+	System.Security.Cryptography.Primitives, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Security.Cryptography.Primitives.dll
+	System.Text.Encoding.Extensions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Text.Encoding.Extensions.dll
+	System.Text.RegularExpressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Text.RegularExpressions.dll
+	System.Threading, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Threading.dll
+	System.Threading.Thread, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Threading.Thread.dll
+	System.Threading.ThreadPool, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Threading.ThreadPool.dll
+	System.Windows.Forms, Version=6.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.WindowsDesktop.App\6.0.18\System.Windows.Forms.dll
+	System.Windows.Forms.Design, Version=6.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.WindowsDesktop.App\6.0.18\System.Windows.Forms.Design.dll
+	System.Windows.Forms.Primitives, Version=6.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.WindowsDesktop.App\6.0.18\System.Windows.Forms.Primitives.dll
+	System.Xml.ReaderWriter, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Xml.ReaderWriter.dll
+	System.Xml.XmlSerializer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, Location=C:\Program Files (x86)\dotnet\shared\Microsoft.NETCore.App\6.0.18\System.Xml.XmlSerializer.dll
+	tmLib6, Version=1.0.8568.18056, Culture=neutral, PublicKeyToken=null, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\tmLib6.dll
+	Trinhky.Module, Version=1.0.8568.18422, Culture=neutral, PublicKeyToken=null, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\Trinhky.Module.dll
+	Trinhky.Win, Version=1.0.8568.18423, Culture=neutral, PublicKeyToken=null, Location=D:\Dev23\Trinhky\Trinhky.Win\bin\x86\Release\net6.0-windows\Trinhky.Win.dll
+17.06.23 10:14:22.820	SetupModules
+17.06.23 10:14:23.230	Customize TypesInfo
+17.06.23 10:14:29.392		preferredLanguageName: (User language)
+								userLanguageName: vi-VN
+
+17.06.23 10:14:29.398		preferredLanguageName: (User language)
+								userFormattingCultureName: vi-VN
+								selectedFormattingCultureName: 
+
+17.06.23 10:14:30.243	Logon With Parameters
+17.06.23 10:14:30.248		Type: DevExpress.ExpressApp.Actions.PopupWindowShowAction
+								ID: a7c82593-dcb4-4b43-beed-3c1dd6f92844
+								Category: Unspecified
+
+17.06.23 10:14:30.447	Generate default Model for Action containers
+17.06.23 10:14:33.541	--------------------------------------------------------------------------------
+							Execute action
+
+17.06.23 10:14:33.544		Type: DevExpress.ExpressApp.Actions.SimpleAction
+								ID: DialogCancel
+								Category: PopupActions
+								Controller.Name: DevExpress.ExpressApp.LogonController
+								Context.Name: Log In
+								Context.IsRoot: True
+								Context.SelectedObjects.Count: 1
+								Context.CurrentObject: DevExpress.ExpressApp.Security.AuthenticationStandardLogonParameters
+
+17.06.23 10:14:33.551	Window closing: Log In
+17.06.23 10:14:33.910	Action 'DialogCancel' done
+17.06.23 10:14:33.913	Window closed: Log In
+17.06.23 10:14:34.109	Application stopping
+=====================

@@ -1,0 +1,105 @@
+﻿@page "/"
+@namespace Trinhky.Blazor.Server
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using DevExpress.ExpressApp.Blazor.Components
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- meta name="theme-color" content="#000000" -->
+    <title>Confirm</title>
+    <base href="~/" />
+    <component type="typeof(BootstrapThemeLink)" render-mode="Static" />
+    <!--
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    -->
+    <style>
+        button[type="button"] {
+            height: 36px;
+        }
+    </style>
+
+</head>
+<body>
+    @{
+        string userAgent = Request.Headers["User-Agent"];
+        bool isIE = userAgent.Contains("MSIE") || userAgent.Contains("Trident");
+    }
+    @if(isIE) {
+        <link href="css/site.css" rel="stylesheet" />
+        <div class="d-flex flex-column justify-content-center align-items-center h-100">
+            <div class="d-flex">
+                <img class="mt-2 mr-4" src="_content/DevExpress.ExpressApp.Blazor/images/Sad.svg" width="60" height="60" />
+                <div>
+                    <div class="h1">Internet Explorer is not supported.</div>
+                    <p style="font-size: 1rem; opacity: 0.75;" class="m-0">Trinhky cannot be loaded in Internet Explorer.<br>Please use a different browser.</p>
+                </div>
+            </div>
+        </div>
+    }
+    else {
+        <component type="typeof(SplashScreen)" render-mode="Static" param-Caption='"Confirm"' param-ImagePath='"images/SplashScreen.svg"' />
+
+        <link href="_content/DevExpress.ExpressApp.Blazor/styles.css" rel="stylesheet" />
+        <link href="css/site.css" rel="stylesheet" />
+        <script src="_content/DevExpress.ExpressApp.Blazor/scripts.js"></script>
+
+        <app class="d-none">
+            <component type="typeof(App)" render-mode="Server" />
+        </app>
+        
+        <component type="typeof(AlertsHandler)" render-mode="Server" />
+
+        <div id="blazor-error-ui">
+            <component type="typeof(BlazorError)" render-mode="Static" />
+        </div>
+
+        <script src="_framework/blazor.server.js"></script>
+    }
+    <script>
+        window.blazorExtensions = {
+
+            WriteCookie: function (name, value, days) {
+
+                var expires;
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    expires = "; expires=" + date.toGMTString();
+                }
+                else {
+                    expires = "";
+                }
+                document.cookie = name + "=" + value + expires + "; path=/";
+            }
+        }
+    </script>
+    <script>
+        function navigateBack() {
+            window.history.back();
+        }
+
+        function refreshPage() {
+            location.reload();
+        }
+        function openPDF(pdf) {
+            const pdfBlob = new Blob([pdf], { type: 'application/pdf' });
+
+            // Generate a URL for the Blob object
+            const pdfUrl = URL.createObjectURL(pdfBlob);
+
+            // Open the PDF in a new tab
+            window.open(pdfUrl, '_blank'); 
+            //window.open(pdf);
+            //return false;
+        }
+    </script>
+
+</body>
+</html>

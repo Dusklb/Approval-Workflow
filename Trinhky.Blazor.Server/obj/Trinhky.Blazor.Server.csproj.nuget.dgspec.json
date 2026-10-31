@@ -1,0 +1,423 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\đồ án tốt nghiệp\\TrinhkyAI\\Trinhky\\Trinhky.Blazor.Server\\Trinhky.Blazor.Server.csproj": {}
+  },
+  "projects": {
+    "E:\\đồ án tốt nghiệp\\TrinhkyAI\\tmLib6\\tmLib6.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\đồ án tốt nghiệp\\TrinhkyAI\\tmLib6\\tmLib6.csproj",
+        "projectName": "tmLib6",
+        "projectPath": "E:\\đồ án tốt nghiệp\\TrinhkyAI\\tmLib6\\tmLib6.csproj",
+        "packagesPath": "C:\\Users\\Minhlb\\.nuget\\packages\\",
+        "outputPath": "E:\\đồ án tốt nghiệp\\TrinhkyAI\\tmLib6\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages",
+          "C:\\Program Files\\DevExpress 25.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Minhlb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 25.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\DevExpress 23.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files\\DevExpress 25.2\\Components\\System\\Components\\Packages": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "DevExpress.ExpressApp": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.CodeAnalysis": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.Xpo": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.Persistent.Base": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.Persistent.BaseImpl.Xpo": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\đồ án tốt nghiệp\\TrinhkyAI\\Trinhky\\Trinhky.Blazor.Server\\Trinhky.Blazor.Server.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\đồ án tốt nghiệp\\TrinhkyAI\\Trinhky\\Trinhky.Blazor.Server\\Trinhky.Blazor.Server.csproj",
+        "projectName": "Trinhky.Blazor.Server",
+        "projectPath": "E:\\đồ án tốt nghiệp\\TrinhkyAI\\Trinhky\\Trinhky.Blazor.Server\\Trinhky.Blazor.Server.csproj",
+        "packagesPath": "C:\\Users\\Minhlb\\.nuget\\packages\\",
+        "outputPath": "E:\\đồ án tốt nghiệp\\TrinhkyAI\\Trinhky\\Trinhky.Blazor.Server\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages",
+          "C:\\Program Files\\DevExpress 25.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Minhlb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 25.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\DevExpress 23.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files\\DevExpress 25.2\\Components\\System\\Components\\Packages": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "E:\\đồ án tốt nghiệp\\TrinhkyAI\\tmLib6\\tmLib6.csproj": {
+                "projectPath": "E:\\đồ án tốt nghiệp\\TrinhkyAI\\tmLib6\\tmLib6.csproj"
+              },
+              "E:\\đồ án tốt nghiệp\\TrinhkyAI\\Trinhky\\Trinhky.Module\\Trinhky.Module.csproj": {
+                "projectPath": "E:\\đồ án tốt nghiệp\\TrinhkyAI\\Trinhky\\Trinhky.Module\\Trinhky.Module.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "DevExpress.ExpressApp.Api.Xpo.All": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.Blazor": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.CodeAnalysis": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.Dashboards.Blazor": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.FileAttachment.Blazor": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.Office.Blazor": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.ReportsV2.Blazor": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.Security.Xpo": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.Validation.Blazor": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "Markdig": {
+              "target": "Package",
+              "version": "[0.44.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            },
+            "Swashbuckle.AspNetCore.Annotations": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\đồ án tốt nghiệp\\TrinhkyAI\\Trinhky\\Trinhky.Module\\Trinhky.Module.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\đồ án tốt nghiệp\\TrinhkyAI\\Trinhky\\Trinhky.Module\\Trinhky.Module.csproj",
+        "projectName": "Trinhky.Module",
+        "projectPath": "E:\\đồ án tốt nghiệp\\TrinhkyAI\\Trinhky\\Trinhky.Module\\Trinhky.Module.csproj",
+        "packagesPath": "C:\\Users\\Minhlb\\.nuget\\packages\\",
+        "outputPath": "E:\\đồ án tốt nghiệp\\TrinhkyAI\\Trinhky\\Trinhky.Module\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages",
+          "C:\\Program Files\\DevExpress 25.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Minhlb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 25.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\DevExpress 23.2\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files\\DevExpress 25.2\\Components\\System\\Components\\Packages": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "E:\\đồ án tốt nghiệp\\TrinhkyAI\\tmLib6\\tmLib6.csproj": {
+                "projectPath": "E:\\đồ án tốt nghiệp\\TrinhkyAI\\tmLib6\\tmLib6.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "DevExpress.ExpressApp": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.Chart": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.CloneObject.Xpo": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.CodeAnalysis": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.ConditionalAppearance": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.Dashboards": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.Objects": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.Office": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.ReportsV2": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.Security.Xpo": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.TreeListEditors": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.Validation": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.ViewVariantsModule": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.ExpressApp.Xpo": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.Persistent.Base": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            },
+            "DevExpress.Persistent.BaseImpl.Xpo": {
+              "target": "Package",
+              "version": "[23.2.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

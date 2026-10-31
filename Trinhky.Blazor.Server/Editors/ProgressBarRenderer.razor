@@ -1,0 +1,13 @@
+﻿<div class="progress">
+    <div class="progress-bar" role="progressbar" style=@($"width: {ComponentModel.Value}%;")
+         aria-valuenow=@ComponentModel.Value aria-valuemin="0"
+         aria-valuemax="100">
+        @ComponentModel.Value%
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public ProgressBarModel ComponentModel { get; set; }
+    public static RenderFragment Create(ProgressBarModel componentModel) =>@<ProgressBarRenderer ComponentModel=@componentModel />;
+}

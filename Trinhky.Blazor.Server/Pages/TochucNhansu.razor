@@ -1,0 +1,148 @@
+﻿@page "/TochucNhansu"
+
+@using DevExpress.ExpressApp.Xpo;
+@using DevExpress.ExpressApp;
+@using Trinhky.Module.BusinessObjects;
+@using DevExpress.Xpo;
+@using DevExpress.Xpo.DB;
+@using DevExpress.Data.Filtering;
+
+@inject DevExpress.ExpressApp.Blazor.Services.IXafApplicationProvider appProvider
+@inject DevExpress.ExpressApp.Core.IObjectSpaceFactory objectSpaceFactory
+@inject IJSRuntime JSRuntime
+
+
+<div class="dx-viewport">
+    <div class="containercafe">
+        <div class="row">
+            <div class="col-sm-4 pt-4 pt-lg-0">
+                <div class="mt-1 me-1 flex-grow-1">
+                <div class="card-header bg-transparent text-body py-2 border-bottom-0 fw-bold">Tổ chức:</div>
+                @if (Data == null)
+                {
+                    <p><em>Loading...</em></p>
+                }
+                else
+                {
+                    <div class="cw-320">
+                            <DxTreeView Data="@Data" @ref="@treeView" AllowSelectNodes="true" SelectionChanged="@SelectionChanged"
+                                AnimationType="LayoutAnimationType.Slide">
+                            <DataMappings>
+                                <DxTreeViewDataMapping Text="Name"
+                                                       Key="Id"
+                                                       ParentKey="CategoryId" />
+                            </DataMappings>
+                        </DxTreeView>
+                    </div>
+                }
+                </div>
+            </div>
+            <div class="col-sm-8 pt-4 pt-lg-0">
+                <div class="card mt-1 me-1 flex-grow-1">
+                    <div class="card-header bg-transparent text-body py-2 border-bottom-0 fw-bold">Nhân sự:</div>
+                    <DxGrid @ref="GridNV" Data="@listns" CssClass="my-grid" PageSize="12"
+                            ShowFilterRow="true"
+                            ColumnResizeMode="GridColumnResizeMode.NextColumn"
+                            SelectionMode="GridSelectionMode.Single"
+                            FocusedRowEnabled="true"
+                            FocusedRowChanged="OnFocusedRowChanged">
+                        <Columns>
+                            <DxGridDataColumn Caption="Số thẻ" FieldName="Sothe" />
+                            <DxGridDataColumn Caption="Họ và Tên" FieldName="Hoten" Width="40%" />
+                            <DxGridDataColumn Caption="Chức vụ" FieldName="Chucvu" Width="40%" />
+                        </Columns>
+
+                    </DxGrid>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+@code {
+    List<BophanItem> Data { get; set; }
+    private NhanvienItem[] listns;
+    IGrid GridNV { get; set; }
+    //public int bophanID;
+    DxTreeView treeView;
+
+    protected void SelectionChanged(TreeViewNodeEventArgs e)
+    {
+        TCom.CurrentBophanID = 0;
+        BophanItem item = (BophanItem)e.NodeInfo.DataItem;
+        if (item != null)
+            TCom.CurrentBophanID = (int)item.Id;
+        
+        GetListNhansu();
+        //treeView.CollapseAll();
+        //treeView.ExpandToNode((n) => n.Text == e.NodeInfo.Text);
+        //if (!e.NodeInfo.IsLeaf)
+        //{
+        //    treeView.SetNodeExpanded((n) => n.Text == e.NodeInfo.Text, true);
+        //}
+    }
+
+    protected override void OnInitialized()
+    {
+        GetListBophan();
+    }
+
+    void OnFocusedRowChanged(GridFocusedRowChangedEventArgs e)
+    {
+    }
+    private void GetListBophan()
+    {
+        if (objectSpaceFactory != null)
+        {
+            IObjectSpace objectSpace = objectSpaceFactory.CreateObjectSpace(typeof(Bophan));
+            Session session = ((XPObjectSpace)objectSpace).Session;
+            XPCollection<Bophan> collection = new XPCollection<Bophan>(session);
+            collection.Sorting = new SortingCollection(new SortProperty("SoTT", SortingDirection.Ascending));
+
+            Data = new();
+            foreach (Bophan item in collection)
+            {
+                BophanItem obj = new()
+                {
+                    Id = item.Oid,
+                    Name = item.Name,
+                };
+                if (item.Parent != null)
+                    obj.CategoryId = item.Parent.Oid;
+
+                Data.Add(obj);
+            }
+
+        }
+    }
+
+    private void GetListNhansu()
+    {
+        if (objectSpaceFactory != null && TCom.CurrentBophanID>0)
+        {
+            IObjectSpace objectSpace = objectSpaceFactory.CreateObjectSpace(typeof(Nhansu));
+            Session session = ((XPObjectSpace)objectSpace).Session;
+            XPCollection<Nhansu> collection = new XPCollection<Nhansu>(session);
+            collection.Criteria = CriteriaOperator.Parse("Donvi=?", TCom.CurrentBophanID);
+
+            List<NhanvienItem> objects = new();
+            foreach (Nhansu item in collection)
+            {
+                NhanvienItem obj = new()
+                {
+                    Sothe = item.Sothe,
+                    Hoten = item.HoTen,
+                };
+
+                //if (item.Chucvu != null)
+                //    obj.Chucvu = item.Chucvu.TenChucvu;
+
+                objects.Add(obj);
+            }
+            listns = objects.ToArray<NhanvienItem>();
+
+        }
+    }
+}
